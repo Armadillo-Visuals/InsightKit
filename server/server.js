@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
 //const controller = require('./controller');
 const PORT = 3000;
 // const axios = require('axios');
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 // app.use(express.static('src'));
 
 if (process.env.NODE_ENV === 'production') {
@@ -30,7 +32,7 @@ app.use('/api', apiRouter);
 
 // general catch all error for page not found
 app.use((req, res) => {
-  return res.status(404).send('Page not found');
+  return res.status(404).json({ err: 'Page not found' });
 });
 
 app.use((err, req, res, next) => {
