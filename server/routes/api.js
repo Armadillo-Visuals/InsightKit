@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const apiController = require('../controllers/apiController');
 
-router.get('/disaster', apiController.getData, (req, res) => {
-  return res.status(200).json(res.locals.data);
+router.get('/disaster/:state/:type', apiController.getData, apiController.getCarbon, (req, res) => {
+  return res.status(200).json({ data: res.locals.data, carbon: res.locals.carbonData });
 });
 
 module.exports = router;
