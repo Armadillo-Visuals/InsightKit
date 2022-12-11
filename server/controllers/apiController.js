@@ -8,7 +8,7 @@ const disasterSum = (response) => {
   // loop through object and store count by year
   for (let i = 0; i < disasterSummaries.length; i++) {
     const year = disasterSummaries[i].declarationDate.slice(0, 4);
-    if (year === '2022' || year === '2021') continue;
+    if (year > '2020' || year < '1970') continue;
     if (!stor[year]) stor[year] = 1;
     else {
       stor[year] += 1;
