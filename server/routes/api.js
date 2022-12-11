@@ -7,5 +7,4 @@ router.get('/disaster', apiController.getData, (req, res) => {
   return res.status(200).json(res.locals.data);
 });
 
-
 module.exports = router;
