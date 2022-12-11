@@ -36,11 +36,15 @@
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
+    "webpack-api-mocker": "^1.7.6",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
-    "chart.js": "^4.0.1",
+    "axios": "^1.2.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
     "react-dom": "^18.2.0"
