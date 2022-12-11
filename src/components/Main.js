@@ -7,9 +7,7 @@ const Main = (props) => {
     <div>
       <h2>In the Main component!</h2>
       <Search handleClick={props.handleClick} />
-      {props.graphData && (
-        <Graph graphData={props.graphData} state={props.state} disaster={props.disaster} />
-      )}
+      <Graph graphData={props.graphData} state={props.state} disaster={props.disaster} />
     </div>
   );
 };
