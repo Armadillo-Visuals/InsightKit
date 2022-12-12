@@ -23,7 +23,7 @@ const disasterTotals = (response) => {
   const stor = {};
   const disasterSummaries = response.data.DisasterDeclarationsSummaries;
   for (let i = 0; i < disasterSummaries.length; i++) {
-    const disasterType = disasterSummaries[i].instanceType;
+    const disasterType = disasterSummaries[i].incidentType;
     if (
       disasterType === 'Flood' ||
       disasterType === 'Fire' ||
@@ -98,13 +98,17 @@ apiController.getCarbon = (req, res, next) => {
 
 apiController.getAllDisasters = async (req, res, next) => {
   try {
+    
     const response = await axios.get(
       `https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=state eq '${req.params.state}'`,
     );
     res.locals.allDisasters = disasterTotals(response);
-    return next;
+    return next();
   } catch (err) {
-    return next({});
+    return next({
+      log: `Error occurred in getAllDisasters middleware: ${err}`,
+      message: { err: 'Unable to get data for state disasters' },
+    });
   }
 };
 
