@@ -19,24 +19,7 @@ const App = () => {
         setGraphData(data);
       })
       .catch((err) => console.log(err));
-    // let data = {
-    //     labels: ['Jun', 'Jul', 'Aug', 'Sept'],
-    //     datasets: [
-    //       {
-    //         id: 1,
-    //         label: 'icecream',
-    //         data: [5, 6, 7, 8],
-    //       },
-    //       {
-    //         id: 2,
-    //         label: 'pancakes',
-    //         data: [3, 2, 1, 0],
-    //       },
-    //     ],
-    //   }
-    //   setGraphData(data)
   };
-  console.log('grpah data', graphData);
   return (
     <div>
       <h1>Environmental Tracker</h1>
