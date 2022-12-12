@@ -2,49 +2,11 @@
 
 import React, { component } from 'react';
 
-// export const handleClick = () => {
-//     console.log('y')
-//     let number = document.getElementById('number')
-//     let transportation = document.getElementById('transportation')
-//     fetch('/getdata', {
-//         method: 'POST',
-//         headers: {
-//             'Content-type': 'Application/JSON'
-//         },
-//         body: JSON.stringify({passengers: number, transportation: transportation})
-//     })
-// }
-
 const Search = (props) => {
-  // const handleClick = () => {
-  //     let state = document.getElementById('state').value
-  //     let disaster = document.getElementById('disaster').value
-  //     // console.log(`/disaster/${state}/${disaster}`)
-  //     // fetch(`/disaster/${state}/${disaster}`)
-  //     // .then((response) => response.json())
-  //     // .then((data) => setGraphData(data));
-  //     let data = {
-  //         labels: ['Jun', 'Jul', 'Aug', 'Sept'],
-  //         datasets: [
-  //           {
-  //             id: 1,
-  //             label: 'icecream',
-  //             data: [5, 6, 7, 8],
-  //           },
-  //           {
-  //             id: 2,
-  //             label: 'pancakes',
-  //             data: [3, 2, 1, 0],
-  //           },
-  //         ],
-  //       }
-  //       setGraphData(data)
-  // }
-
   return (
     <div>
-      <label htmlFor='byState'>State:</label>
-      <select id='state' name='state'>
+      <label htmlFor='byState'></label>
+      <select className='dropbtn' id='state' name='state'>
         <option value='AL'>Alabama</option>
         <option value='AK'>Alaska</option>
         <option value='AZ'>Arizona</option>
@@ -98,8 +60,8 @@ const Search = (props) => {
         <option value='WY'>Wyoming</option>
       </select>
       <span>
-        <label htmlFor='disaster'>Disaster Type:</label>
-        <select id='disaster' name='disaster'>
+        <label htmlFor='disaster'></label>
+        <select className='dropbtn' id='disaster' name='disaster'>
           <option value='Flood'>Flood</option>
           <option value='Fire'>Fire</option>
           <option value='Earthquake'>Earthquake</option>
@@ -113,7 +75,9 @@ const Search = (props) => {
         <option value='Alabama'></option>
       </span>
       <span>
-        <button onClick={props.handleClick}>Enter</button>
+        <button className='enter' onClick={props.handleClick}>
+          Enter
+        </button>
       </span>
     </div>
   );
