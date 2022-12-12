@@ -19,29 +19,24 @@ const disasterSum = (response) => {
 
 apiController.getData = async (req, res, next) => {
   const { state, type } = req.params;
-  console.log('state and type', state, type);
   try {
     if (type === 'All') {
       const response = await axios.get(
         `https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=state eq '${state}'`,
       );
-      console.log(disasterSum(response));
       res.locals.data = disasterSum(response);
     } else if (type === 'SevereStorms') {
       const response = await axios.get(
         `https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries/?$filter=(state eq '${state}' and substringof('Storm',incidentType) or substringof('storm',incidentType))`,
       );
-      console.log(disasterSum(response));
       res.locals.data = disasterSum(response);
     } else {
       const response = await axios.get(
         `https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=state eq '${state}' and incidentType eq '${type}'`,
       );
-      console.log(disasterSum(response));
       res.locals.data = disasterSum(response);
     }
 
-    console.log(res.locals.data);
     return next();
   } catch (err) {
     return next({
