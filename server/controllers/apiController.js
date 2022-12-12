@@ -2,9 +2,11 @@ const axios = require('axios');
 const db = require('../models/carbonModel');
 
 const apiController = {};
+
 const disasterSum = (response) => {
   const stor = {};
   const disasterSummaries = response.data.DisasterDeclarationsSummaries;
+
   // loop through object and store count by year
   for (let i = 0; i < disasterSummaries.length; i++) {
     const year = disasterSummaries[i].declarationDate.slice(0, 4);
@@ -12,6 +14,30 @@ const disasterSum = (response) => {
     if (!stor[year]) stor[year] = 1;
     else {
       stor[year] += 1;
+    }
+  }
+  return stor;
+};
+
+const disasterTotals = (response) => {
+  const stor = {};
+  const disasterSummaries = response.data.DisasterDeclarationsSummaries;
+  for (let i = 0; i < disasterSummaries.length; i++) {
+    const disasterType = disasterSummaries[i].instanceType;
+    if (
+      disasterType === 'Flood' ||
+      disasterType === 'Fire' ||
+      disasterType === 'Earthquake' ||
+      disasterType.toLowerCase().includes('storm') ||
+      disasterType === 'Hurricane' ||
+      disasterType === 'Tornado' ||
+      disasterType === 'Freezing' ||
+      disasterType === 'Drought'
+    ) {
+      if (!stor[disasterType]) stor[disasterType] = 1;
+      else {
+        stor[disasterType]++;
+      }
     }
   }
   return stor;
@@ -67,6 +93,18 @@ apiController.getCarbon = (req, res, next) => {
       log: `Error occurred in getCarbon middleware: ${err}`,
       message: { err: 'Unable to get data for state carbon emissions' },
     });
+  }
+};
+
+apiController.getAllDisasters = async (req, res, next) => {
+  try {
+    const response = await axios.get(
+      `https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=state eq '${req.params.state}'`,
+    );
+    res.locals.allDisasters = disasterTotals(response);
+    return next;
+  } catch (err) {
+    return next({});
   }
 };
 

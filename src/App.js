@@ -9,8 +9,8 @@ const App = () => {
   const [graphData, setGraphData] = useState(null);
 
   const handleClick = () => {
-    let state = document.getElementById('state').value;
-    let disaster = document.getElementById('disaster').value;
+    const state = document.getElementById('state').value;
+    const disaster = document.getElementById('disaster').value;
     setStateQuerey(state);
     setDisaster(disaster);
     fetch(`http://localhost:3000/api/disaster/${state}/${disaster}`)
