@@ -9,13 +9,11 @@ router.get(
   apiController.getCarbon,
   apiController.getAllDisasters,
   (req, res) => {
-    return res
-      .status(200)
-      .json({
-        data: res.locals.data,
-        carbon: res.locals.carbonData,
-        typeData: res.locals.allDisasters,
-      });
+    return res.status(200).json({
+      data: res.locals.data,
+      carbon: res.locals.carbonData,
+      typeData: res.locals.allDisasters,
+    });
   },
 );
 

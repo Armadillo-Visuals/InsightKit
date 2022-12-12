@@ -98,7 +98,6 @@ apiController.getCarbon = (req, res, next) => {
 
 apiController.getAllDisasters = async (req, res, next) => {
   try {
-    
     const response = await axios.get(
       `https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=state eq '${req.params.state}'`,
     );

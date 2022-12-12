@@ -11,47 +11,50 @@ const Graph = ({ graphData, disaster, state }) => {
     }, {});
   }
   return (
-    <Line
-      datasetIdKey='disasters'
-      data={{
-        datasets: [
-          {
-            label: 'carbon emissions',
-            yAxisID: 'emissions',
-            data: carbon || null,
-            borderColor: '#4287f5',
-            backgroundColor: '#4287f5',
-          },
-          {
-            label: `${disaster}`,
-            yAxisID: 'occurences',
-            data: graphData?.data || null,
-            borderColor: '#f26b6b',
-            backgroundColor: '#f26b6b',
-          },
-        ],
-      }}
-      options={{
-        scales: {
-          occurences: {
-            title: {
-              display: true,
-              text: `${disaster === 'All' ? 'disasters' : disaster + 's'} per year`,
+    <div className='graph' id='mydiv'>
+      <h2>Carbon Emissions vs Disasters by Year</h2>
+      <Line
+        datasetIdKey='disasters'
+        data={{
+          datasets: [
+            {
+              label: 'carbon emissions',
+              yAxisID: 'emissions',
+              data: carbon || null,
+              borderColor: '#4287f5',
+              backgroundColor: '#4287f5',
             },
-            type: 'linear',
-            position: 'left',
-          },
-          emissions: {
-            title: {
-              display: true,
-              text: 'carbon emissions',
+            {
+              label: `${disaster}`,
+              yAxisID: 'occurences',
+              data: graphData?.data || null,
+              borderColor: '#f26b6b',
+              backgroundColor: '#f26b6b',
             },
-            type: 'linear',
-            position: 'right',
+          ],
+        }}
+        options={{
+          scales: {
+            occurences: {
+              title: {
+                display: true,
+                text: `${disaster === 'All' ? 'disasters' : disaster + 's'} per year`,
+              },
+              type: 'linear',
+              position: 'left',
+            },
+            emissions: {
+              title: {
+                display: true,
+                text: 'carbon emissions',
+              },
+              type: 'linear',
+              position: 'right',
+            },
           },
-        },
-      }}
-    />
+        }}
+      />
+    </div>
   );
 };
 

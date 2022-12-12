@@ -21,7 +21,7 @@ const App = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div className='title'>
       <h1>Environmental Tracker</h1>
       <Main graphData={graphData} state={state} disaster={disaster} handleClick={handleClick} />
     </div>

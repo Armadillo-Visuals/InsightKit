@@ -5,8 +5,8 @@ import React, { component } from 'react';
 const Search = (props) => {
   return (
     <div>
-      <label htmlFor='byState'>State:</label>
-      <select id='state' name='state'>
+      <label htmlFor='byState'></label>
+      <select className='dropbtn' id='state' name='state'>
         <option value='AL'>Alabama</option>
         <option value='AK'>Alaska</option>
         <option value='AZ'>Arizona</option>
@@ -60,8 +60,8 @@ const Search = (props) => {
         <option value='WY'>Wyoming</option>
       </select>
       <span>
-        <label htmlFor='disaster'>Disaster Type:</label>
-        <select id='disaster' name='disaster'>
+        <label htmlFor='disaster'></label>
+        <select className='dropbtn' id='disaster' name='disaster'>
           <option value='Flood'>Flood</option>
           <option value='Fire'>Fire</option>
           <option value='Earthquake'>Earthquake</option>
@@ -75,7 +75,9 @@ const Search = (props) => {
         <option value='Alabama'></option>
       </span>
       <span>
-        <button onClick={props.handleClick}>Enter</button>
+        <button className='enter' onClick={props.handleClick}>
+          Enter
+        </button>
       </span>
     </div>
   );
