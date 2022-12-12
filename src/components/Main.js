@@ -4,10 +4,15 @@ import Search from './search';
 
 const Main = (props) => {
   return (
-    <div>
-      <h2>In the Main component!</h2>
+    <div className='container'>
+      {/* <h1>Environmental Tracker</h1> */}
       <Search handleClick={props.handleClick} />
-      <Graph graphData={props.graphData} state={props.state} disaster={props.disaster} />
+      <Graph
+        className='graph'
+        graphData={props.graphData}
+        state={props.state}
+        disaster={props.disaster}
+      />
     </div>
   );
 };

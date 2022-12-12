@@ -94,43 +94,48 @@ const carbonData = {
 
 const Graph = (props) => {
   return (
-    <Line
-      datasetIdKey='disasters'
-      data={{
-        datasets: [
-          {
-            label: 'carbon emissions',
-            yAxisID: 'emissions',
-            data: carbonData,
-          },
-          {
-            label: `${props.disaster}`,
-            yAxisID: 'occurences',
-            data: fireData,
-          },
-        ],
-      }}
-      options={{
-        scales: {
-          occurences: {
-            title: {
-              display: true,
-              text: `${props.disaster}s per year`,
+    <div className='graph' id='mydiv'>
+      <h2>Carbon Emissions vs Disasters by Year</h2>
+      <Line
+        id='mydivheader'
+        className='line'
+        datasetIdKey='disasters'
+        data={{
+          datasets: [
+            {
+              label: 'carbon emissions',
+              yAxisID: 'emissions',
+              data: carbonData,
             },
-            type: 'linear',
-            position: 'left',
-          },
-          emissions: {
-            title: {
-              display: true,
-              text: 'carbon emissions',
+            {
+              label: `${props.disaster}`,
+              yAxisID: 'occurences',
+              data: fireData,
             },
-            type: 'linear',
-            position: 'right',
+          ],
+        }}
+        options={{
+          scales: {
+            occurences: {
+              title: {
+                display: true,
+                text: `${props.disaster}s per year`,
+              },
+              type: 'linear',
+              position: 'left',
+            },
+            emissions: {
+              title: {
+                display: true,
+                text: 'carbon emissions',
+              },
+              type: 'linear',
+              position: 'right',
+            },
           },
-        },
-      }}
-    />
+        }}
+      />
+    </div>
   );
 };
 

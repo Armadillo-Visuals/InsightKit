@@ -43,8 +43,8 @@ const Search = (props) => {
 
   return (
     <div>
-      <label htmlFor='byState'>State:</label>
-      <select id='state' name='state'>
+      <label dropbtnhtmlFor='byState'></label>
+      <select className='dropbtn' id='state' name='state'>
         <option value='Alabama'>Alabama</option>
         <option value='Alaska'>Alaska</option>
         <option value='Arkansas'>Arkansas</option>
@@ -98,8 +98,8 @@ const Search = (props) => {
         <option value='Wyoming'>Wyoming</option>
       </select>
       <span>
-        <label htmlFor='disaster'>Disaster Type:</label>
-        <select id='disaster' name='disaster'>
+        <label htmlFor='disaster'></label>
+        <select className='dropbtn' id='disaster' name='disaster'>
           <option value='Flood'>Flood</option>
           <option value='Earthquake'>Earthquake</option>
           <option value='severeStorms'>Severe Storm</option>
@@ -112,7 +112,9 @@ const Search = (props) => {
         <option value='Alabama'></option>
       </span>
       <span>
-        <button onClick={props.handleClick}>Enter</button>
+        <button className='enter' onClick={props.handleClick}>
+          Enter
+        </button>
       </span>
     </div>
   );
