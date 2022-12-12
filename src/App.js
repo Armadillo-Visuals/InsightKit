@@ -20,8 +20,6 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   };
-
-  console.log('grpah data', graphData);
   return (
     <div>
       <h1>Environmental Tracker</h1>

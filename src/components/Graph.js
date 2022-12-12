@@ -19,13 +19,15 @@ const Graph = ({ graphData, disaster, state }) => {
             label: 'carbon emissions',
             yAxisID: 'emissions',
             data: carbon || null,
-            borderColor: 'blue',
+            borderColor: '#4287f5',
+            backgroundColor: '#4287f5',
           },
           {
             label: `${disaster}`,
             yAxisID: 'occurences',
             data: graphData?.data || null,
-            borderColor: 'red',
+            borderColor: '#f26b6b',
+            backgroundColor: '#f26b6b',
           },
         ],
       }}
@@ -34,7 +36,7 @@ const Graph = ({ graphData, disaster, state }) => {
           occurences: {
             title: {
               display: true,
-              text: `${disaster}s per year`,
+              text: `${disaster === 'All' ? 'disasters' : disaster + 's'} per year`,
             },
             type: 'linear',
             position: 'left',
