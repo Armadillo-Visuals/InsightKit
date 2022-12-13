@@ -33,12 +33,13 @@ h2 {
 }
 
 .enter {
-  background-color: #dedede;
-  color: rgb(64, 67, 57);
+  background-color: #2fa8cc;
+  color: white;
   padding: 12px;
   font-size: 16px;
   border: none;
   margin-right: 10px;
+  margin-left: 15px;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -152,7 +153,7 @@ body {
 }
 
 .enter:hover {
-  background-color: #c5c5c5;
+  background-color: #49bbde;
 }
 
 /* #mydiv {

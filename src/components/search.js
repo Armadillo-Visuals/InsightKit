@@ -59,21 +59,21 @@ const Search = (props) => {
         <option value='WI'>Wisconsin</option>
         <option value='WY'>Wyoming</option>
       </select>
-      <span>
-        <label htmlFor='disaster'></label>
-        <select className='dropbtn' id='disaster' name='disaster'>
-          <option value='Flood'>Flood</option>
-          <option value='Fire'>Fire</option>
-          <option value='Earthquake'>Earthquake</option>
-          <option value='SevereStorms'>Severe Storm</option>
-          <option value='Hurricane'>Hurricane</option>
-          <option value='Tornado'>Tornado</option>
-          <option value='Freezing'>Freezing</option>
-          <option value='Drought'>Drought</option>
-          <option value='All'>All</option>
-        </select>
+      <label htmlFor='disaster'></label>
+      <select className='dropbtn' id='disaster' name='disaster'>
+        <option value='Flood'>Flood</option>
+        <option value='Fire'>Fire</option>
+        <option value='Earthquake'>Earthquake</option>
+        <option value='SevereStorms'>Severe Storm</option>
+        <option value='Hurricane'>Hurricane</option>
+        <option value='Tornado'>Tornado</option>
+        <option value='Freezing'>Freezing</option>
+        <option value='Drought'>Drought</option>
+        <option value='All'>All</option>
+      </select>
+      {/* <span>
         <option value='Alabama'></option>
-      </span>
+      </span> */}
       <span>
         <button className='enter' onClick={props.handleClick}>
           Enter
