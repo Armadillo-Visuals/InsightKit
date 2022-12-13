@@ -1,1 +1,1 @@
-# InsightKit
+# Environment-IQ
