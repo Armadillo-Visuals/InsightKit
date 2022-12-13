@@ -8,6 +8,16 @@ const App = () => {
   const [disaster, setDisaster] = useState('');
   const [graphData, setGraphData] = useState(null);
 
+  useEffect(() => {
+    fetch('http://localhost:3000/api/disaster/AL/Flood')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setGraphData(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const handleClick = () => {
     const state = document.getElementById('state').value;
     const disaster = document.getElementById('disaster').value;
