@@ -1,0 +1,17 @@
+.navBar {
+  background-color: #39543b;
+  color: #f4f0e1;
+}
+
+.logoutButton {
+  color: white;
+}
+
+/* nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  padding-left: 1rem;
+} */
