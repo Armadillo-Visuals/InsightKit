@@ -5,6 +5,7 @@ import PieChart from './PieChart';
 import Search from './search';
 import Sidebar from './Sidebar';
 import WidgetGridContainer from './widgetGridContainer';
+import Navbar from './NavBar';
 
 // endpoints from the backend for widgets
 // /data/disasters-over-time/:state/:type
@@ -14,6 +15,7 @@ import WidgetGridContainer from './widgetGridContainer';
 const Main = () => {
   return (
     <div className='mainContainer'>
+      <Navbar />
       <Sidebar />
       <WidgetGridContainer />
     </div>
