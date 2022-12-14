@@ -11,15 +11,15 @@ const App = () => {
 
   // console.log(setShowLogin);
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/disaster/AL/Flood')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setGraphData(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/api/disaster/AL/Flood')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setGraphData(data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const handleClick = () => {
     const state = document.getElementById('state').value;

@@ -1,9 +1,33 @@
-.loginForm {
+.background {
+  background-image: url('./images/luca-bravo-ESkw2ayO2As-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /* width: 100vh; */
+  /* height: 500px; */
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.loginForm {
+  display: flex;
+  width: 50%;
+  height: 40%;
+  background-color: #f4f0e1;
+}
 input[type='text'] {
   border-radius: 15px;
   border-color: green;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+button[type='submit'] {
+  background-color: primary;
 }
