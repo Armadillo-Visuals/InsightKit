@@ -1,16 +1,125 @@
 const usersDB = require('../models/userModel');
+const bcrypt = require('bcrypt');
+const { E } = require('chart.js/dist/chunks/helpers.core');
+
 const userController = {};
 
 // create a new user (on signup)
-userController.createUser = (req, res, next) => {
-  // destructure the req body containing the first name, last name, password and username
-  // hash the password using Bcrypt
-  // insert the user into the user table in sql
-  // send back a status code
-  // send back newly created user
+// currently doesn't return the newly created user
+userController.createUser = async (req, res, next) => {
+  try {
+    // destructure the req body containing the first name, last name, password and username
+    const { firstName, lastName, username, password } = req.body;
+    // hash the password using Bcrypt
+    const hashedPassword = await bcrypt.hash(password, 10);
+    // insert the user into the user table in sql
+    const createUserQuery = `
+      INSERT INTO users (firstName, lastName, username, password)
+      VALUES ($1, $2, $3, $4)
+      RETURNING *
+    `;
+    const userData = [firstName, lastName, username, hashedPassword];
+    const response = await usersDB.query(createUserQuery, userData);
+    res.locals.user = response.rows[0];
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error occurred in userController.createUser middleware ${err}`,
+
+      message: { err: 'Unable to create a new user account' },
+    });
+  }
 };
 
 // verify/retrieve a user (on login)
-userController.getUser = (req, res, next) => {};
+// currently frontend will render the goodies
+// when the user refreshes the page, frontend will check localStorage to see if a user has logged in
+// the user information will persist as long as page isn't refreshed or the user doesn't log out
+userController.verifyUser = async (req, res, next) => {
+  try {
+    // query string for locating user from database with username from request body
+    const getUserQuery = 'SELECT * FROM users WHERE username = $1';
+    // get user (if exists) that matches passed in username
+    const { rows } = await usersDB.query(getUserQuery, [req.body.username]);
+    const user = rows[0];
+    // use bcrypt.compare to make sure that the passed in password, once hashed, matches the hashed password in the database.
+    if (user && (await bcrypt.compare(req.body.password, user.password))) {
+      // if yes, go on to next middleware function, adding user info to res.locals
+      // NOTE: ONCE WE HAVE A WIDGETS TABLE, WE'LL ALSO WANT TO SEND BACK USER'S WIDGETS
+      res.locals.user = user;
+      return next();
+    }
+    return next({
+      log: 'Error occurred in userController.verifyUser middleware: incorrect username or password',
+      message: { err: 'Incorrect username or password. Try again.' },
+    });
+  } catch (err) {
+    return next({
+      log: `Error occurred in userController.verifyUser middleware ${err}`,
+      message: { err: 'Unable to verify user' },
+    });
+  }
+};
+
+userController.addWidget = async (req, res, next) => {
+  try {
+    // expects req.body to contain user id and desired widget combo (i.e. data type, graph type, parameters)
+    const { userID, graphType, dataType, parameter1, parameter2, parameter3 } = req.body;
+    // check if that widget exists inside widget table
+    const getWidgetQuery = `
+      SELECT id FROM widgets
+      WHERE 
+        graphType = $1 AND
+        dataType = $2 AND
+        parameter1 = $3 AND
+        parameter2 = $4 AND
+        parameter3 = $5
+    `;
+    const widgetParams = [graphType, dataType, parameter1, parameter2, parameter3];
+    const { rows } = await usersDB.query(getWidgetQuery, widgetParams);
+    let widget = rows[0];
+    // if widget doesn't yet exist, add it to the widgets table
+    if (!widget) {
+      const addWidgetQuery = `
+        INSERT INTO widgets (graphType, dataType, parameter1, parameter2, parameter3)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *
+      `;
+      const { rows } = await usersDB.query(addWidgetQuery, widgetParams);
+      widget = rows[0];
+    }
+    // then adds user_id/widget_id combo to join table
+    const joinUserWidgetQuery = `
+      INSERT INTO user_widgets (user_id, widget_id)
+      VALUES ($1, $2)
+      RETURNING *
+    `;
+    const response = await usersDB.query(joinUserWidgetQuery, [userID, widget.id]);
+    // RIGHT NOW THIS JUST SENDS BACK THE ROW OF THE JOIN TABLE (NOT THE USER OR THE WIDGETS)
+    res.locals.updatedUser = response.rows[0];
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error occurred in userController.addWidgetmiddleware ${err}`,
+      message: { err: 'Unable to verify user' },
+    });
+  }
+};
+
+userController.getUserWidgets = async (req, res, next) => {
+  // query the database for all widget ids with the id of the user in res.locals
+
+  // we're grabbing all graph information from the widgets table
+  // grab the user id which we're getting from res.locals.user.id
+  // join the two, effectively being able to send back all the graphs associate with the user
+  const userWidgetsQuery = `
+    SELECT widgets.graphType, widgets.dataType, widgets.parameter1, widgets.parameter2, widgets.parameter3
+    FROM widgets INNER JOIN users WHERE 
+  `;
+  const response = await usersDB.query(userWidgetsQuery, [res.locals.user.id]);
+  console.log(response);
+  // add those to the user info that we send back to the front end
+  return next();
+};
 
 module.exports = userController;
