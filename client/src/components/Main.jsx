@@ -6,6 +6,7 @@ import Search from './search';
 import Sidebar from './Sidebar';
 import WidgetGridContainer from './widgetGridContainer';
 import Navbar from './NavBar';
+import '../stylesheets/main.css';
 
 // endpoints from the backend for widgets
 // /data/disasters-over-time/:state/:type
@@ -14,10 +15,14 @@ import Navbar from './NavBar';
 
 const Main = () => {
   return (
-    <div className='mainContainer'>
-      <Navbar />
-      <Sidebar />
-      <WidgetGridContainer />
+    <div className='mainWrapper'>
+      <div className='mainContainer'>
+        <Navbar />
+        <div className='bodyContainer'>
+          <Sidebar />
+          <WidgetGridContainer />
+        </div>
+      </div>
     </div>
   );
 };

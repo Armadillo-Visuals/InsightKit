@@ -1,6 +1,7 @@
 import React from 'react';
 import StateDropdown from './StateDropdown';
 import DisasterDropdown from './disasterDropdown';
+import '../stylesheets/sidebar.css';
 // endpoints from the backend for widgets
 // /data/disasters-over-time/:state/:type
 // /data/carbon-over-time/:state
@@ -13,22 +14,24 @@ const Sidebar = () => {
   // have on click functions that pass the parameters and new url to axios request
 
   return (
-    <div className='sidebarContainer'>
-      <div className='disastersWidget'>
-        <h1>DisasterPie</h1>
-        <StateDropdown />
-        <DisasterDropdown />
-        <button>+</button>
-      </div>
-      <div className='carbonWidget'>
-        <h1>Air Quality</h1>
-        <StateDropdown />
-        <button>+</button>
-      </div>
-      <div className='disastersAllTimeWidget'>
-        <h1>Distasters by State</h1>
-        <StateDropdown />
-        <button>+</button>
+    <div className='sidebarWrapper'>
+      <div className='sidebarContainer'>
+        <div className='disastersWidget'>
+          <h1>DisasterPie</h1>
+          <StateDropdown />
+          <DisasterDropdown />
+          <button>+</button>
+        </div>
+        <div className='carbonWidget'>
+          <h1>Air Quality</h1>
+          <StateDropdown />
+          <button>+</button>
+        </div>
+        <div className='disastersAllTimeWidget'>
+          <h1>Distasters by State</h1>
+          <StateDropdown />
+          <button>+</button>
+        </div>
       </div>
     </div>
   );
