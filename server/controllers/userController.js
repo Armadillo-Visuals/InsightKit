@@ -20,11 +20,11 @@ userController.createUser = async (req, res, next) => {
     const userData = [firstName, lastName, username, hashedPassword];
     const response = await usersDB.query(createUserQuery, userData);
     res.locals.user = response.rows[0];
+    res.locals.user.widgets = [];
     return next();
   } catch (err) {
     return next({
       log: `Error occurred in userController.createUser middleware ${err}`,
-
       message: { err: 'Unable to create a new user account' },
     });
   }
@@ -64,6 +64,18 @@ userController.addWidget = async (req, res, next) => {
   try {
     // expects req.body to contain user id and desired widget combo (i.e. data type, graph type, parameters)
     const { userID, graphType, dataType, parameter1, parameter2, parameter3 } = req.body;
+    // make sure a user exists in the database with that userID and get the rest of their info
+    const response = await usersDB.query('SELECT * FROM users WHERE id = $1', [userID]);
+    const user = response.rows[0];
+    // if a user doesn't exist with that ID, return an appropriate error message
+    if (!user) {
+      return next({
+        log: 'Error occurred in userController.addWidget middleware: no user found with user id',
+        message: { err: 'No user found with that user id' },
+      });
+    }
+    // add user info to res.locals
+    res.locals.user = user;
     // check if that widget exists inside widget table
     const getWidgetQuery = `
       SELECT id FROM widgets
@@ -115,7 +127,7 @@ userController.getUserWidgets = async (req, res, next) => {
     `;
     const { rows } = await usersDB.query(userWidgetsQuery, [req.body.userID]);
     // add those to the user info that we send back to the front end
-    res.locals.widgets = !rows.length ? [] : rows;
+    res.locals.user.widgets = !rows.length ? [] : rows;
     return next();
   } catch (err) {
     return next({
