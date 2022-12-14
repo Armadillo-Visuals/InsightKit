@@ -45,7 +45,7 @@ const Login = ({ showLogin, setShowLogin }) => {
   const checkCookies = () => {
     const active = localStorage.getItem('active');
     if (active === true) {
-      changeToMain();
+      // changeToMain();
     }
   };
 
@@ -58,7 +58,9 @@ const Login = ({ showLogin, setShowLogin }) => {
         <input type='text' name='password' placeholder='Password' />
         <br></br>
         <button type='submit'>Login</button>
-        <button onClick={() => changePage('main')}>Main</button>
+        <button className='btn' onClick={() => changePage('main')}>
+          Main
+        </button>
         <button onClick={() => changePage('signup')}>Sign up!</button>
       </form>
     </div>
