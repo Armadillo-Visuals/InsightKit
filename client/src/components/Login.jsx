@@ -3,6 +3,7 @@ import Graph from './Graph';
 import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';
+// import leaf from '../stylesheets/images/The Environment (1).png';
 
 const Login = ({ showLogin, setShowLogin }) => {
   const changePage = (page) => {
@@ -50,19 +51,22 @@ const Login = ({ showLogin, setShowLogin }) => {
   };
 
   return (
-    <div className='loginForm'>
-      <h1>Login</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input type='text' name='username' placeholder='Username' />
-        <br></br>
-        <input type='text' name='password' placeholder='Password' />
-        <br></br>
-        <button type='submit'>Login</button>
-        <button className='btn' onClick={() => changePage('main')}>
-          Main
-        </button>
-        <button onClick={() => changePage('signup')}>Sign up!</button>
-      </form>
+    <div className='background'>
+      {/* <img src={leaf} height='50px' width='50px'></img> */}
+      <div className='loginForm'>
+        <h1>Login</h1>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <input type='text' name='username' placeholder='Username' />
+          <br></br>
+          <input type='text' name='password' placeholder='Password' />
+          <br></br>
+          <button type='submit'>Login</button>
+          <button className='btn' onClick={() => changePage('main')}>
+            Main
+          </button>
+          <button onClick={() => changePage('signup')}>Sign up!</button>
+        </form>
+      </div>
     </div>
   );
 };
