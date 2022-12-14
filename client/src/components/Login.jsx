@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Graph from './Graph';
-import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';
 // import leaf from '../stylesheets/images/The Environment (1).png';
@@ -28,13 +26,18 @@ const Login = ({ showLogin, setShowLogin }) => {
   // post request to the backend to authenticate the user
   async function authenticateUser(username, password) {
     try {
-      const response = await axios.post('/user', {
+      const response = await axios.post('/user/login', {
         username,
         password,
       });
       console.log('response from server: ', response);
+      const { id, firstname, lastname, username, password, widgets } = response;
+      // returns id, firstname, last name, username, hashed password, and array of widget objects
+
       // set cookies for the username and their active status
       // IDK if this actually works
+
+      // store the array of widget objects to have other widget pages to access that stored information
       localStorage.setItem('username', username);
       localStorage.setItem('active', response);
     } catch (error) {

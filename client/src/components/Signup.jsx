@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Signup = ({ showLogin, setShowLogin }) => {
   const changePage = () => {
@@ -15,6 +16,20 @@ const Signup = ({ showLogin, setShowLogin }) => {
     // form will also make a request to the back end storing the relevant data in a database
     // axios request goes here
   };
+
+  async function CreateNewUser(username, password, firstname, lastname) {
+    try {
+      const response = await axios.post('/users/signup', {
+        username,
+        password,
+        firstname,
+        lastname,
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   //   should send post request to the server to create a new user
 
