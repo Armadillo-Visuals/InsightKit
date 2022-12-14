@@ -1,6 +1,5 @@
 const usersDB = require('../models/userModel');
 const bcrypt = require('bcrypt');
-const { E } = require('chart.js/dist/chunks/helpers.core');
 
 const userController = {};
 
@@ -90,13 +89,11 @@ userController.addWidget = async (req, res, next) => {
     }
     // then adds user_id/widget_id combo to join table
     const joinUserWidgetQuery = `
-      INSERT INTO user_widgets (user_id, widget_id)
+      INSERT INTO users_widgets (user_id, widget_id)
       VALUES ($1, $2)
       RETURNING *
     `;
-    const response = await usersDB.query(joinUserWidgetQuery, [userID, widget.id]);
-    // RIGHT NOW THIS JUST SENDS BACK THE ROW OF THE JOIN TABLE (NOT THE USER OR THE WIDGETS)
-    res.locals.updatedUser = response.rows[0];
+    await usersDB.query(joinUserWidgetQuery, [userID, widget.id]);
     return next();
   } catch (err) {
     return next({
@@ -107,19 +104,25 @@ userController.addWidget = async (req, res, next) => {
 };
 
 userController.getUserWidgets = async (req, res, next) => {
-  // query the database for all widget ids with the id of the user in res.locals
-
-  // we're grabbing all graph information from the widgets table
-  // grab the user id which we're getting from res.locals.user.id
-  // join the two, effectively being able to send back all the graphs associate with the user
-  const userWidgetsQuery = `
-    SELECT widgets.graphType, widgets.dataType, widgets.parameter1, widgets.parameter2, widgets.parameter3
-    FROM widgets INNER JOIN users WHERE 
-  `;
-  const response = await usersDB.query(userWidgetsQuery, [res.locals.user.id]);
-  console.log(response);
-  // add those to the user info that we send back to the front end
-  return next();
+  try {
+    // query the database for all widget ids with the id of the user in res.locals
+    // we're grabbing all graph information from the widgets table
+    // grab the user id which we're getting from res.locals.user.id
+    // join the two, effectively being able to send back all the graphs associate with the user
+    const userWidgetsQuery = `
+      SELECT graphType, dataType, parameter1, parameter2, parameter3
+      FROM widgets WHERE id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
+    `;
+    const { rows } = await usersDB.query(userWidgetsQuery, [req.body.userID]);
+    // add those to the user info that we send back to the front end
+    res.locals.widgets = !rows.length ? [] : rows;
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error occurred in userController.getUserWidgets ${err}`,
+      message: { err: 'Unable to get users widgets' },
+    });
+  }
 };
 
 module.exports = userController;

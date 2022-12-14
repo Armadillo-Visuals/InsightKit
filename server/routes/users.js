@@ -9,7 +9,6 @@ router.post('/signup', userController.createUser, (req, res) => {
 
 // endpoint to verify user on login AND respond with user info (including widgets)
 router.post('/login', userController.verifyUser, userController.getUserWidgets, (req, res) => {
-  // UPDATE TO GET WIDGETS TOO
   return res.status(200).json(res.locals.user);
 });
 
@@ -17,9 +16,8 @@ router.post('/login', userController.verifyUser, userController.getUserWidgets, 
 // pass request through middleware that checks if that widget exists inside widget table (and creates it if not)
 // then adds user_id/widget_id combo to join table
 // sends back updated user info
-router.patch('/widget', userController.addWidget, (req, res) => {
-  // RIGHT NOW THIS SENDS THE USER BUT NO WIDGETS
-  return res.status(200).json(res.locals.updatedUser);
+router.patch('/widget', userController.addWidget, userController.getUserWidgets, (req, res) => {
+  return res.status(200).json(res.locals.widgets);
 });
 
 module.exports = router;
