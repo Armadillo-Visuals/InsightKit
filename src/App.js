@@ -1,12 +1,16 @@
 import React, { Component, useState, useEffect } from 'react';
 import './stylesheets/styles.css';
-import Graph from './components/Graph';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import Main from './components/Main';
 
 const App = () => {
   const [state, setStateQuerey] = useState('');
   const [disaster, setDisaster] = useState('');
   const [graphData, setGraphData] = useState(null);
+  const [showLogin, setShowLogin] = useState('login');
+
+  // console.log(setShowLogin);
 
   useEffect(() => {
     fetch('http://localhost:3000/api/disaster/AL/Flood')
@@ -30,12 +34,23 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   };
-  return (
-    <div className='title'>
-      <h1>Environmental Tracker</h1>
-      <Main graphData={graphData} state={state} disaster={disaster} handleClick={handleClick} />
-    </div>
-  );
+
+  if (showLogin === 'login') {
+    return (
+      <div className='title'>
+        <h1>Environment-IQ</h1>
+        <Login showLogin={showLogin} setShowLogin={setShowLogin} />
+      </div>
+    );
+  } else if (showLogin === 'signup') {
+    return (
+      <div>
+        <Signup setShowLogin={setShowLogin} showLogin={showLogin} />
+      </div>
+    );
+  } else {
+    return <Main />;
+  }
 };
 
 export default App;

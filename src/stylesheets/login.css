@@ -1,0 +1,9 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type='text'] {
+  border-radius: 15px;
+  border-color: green;
+}
