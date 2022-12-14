@@ -39,6 +39,7 @@
   "dependencies": {
     "async_hooks": "^1.0.0",
     "axios": "^1.2.1",
+    "bcrypt": "^5.1.0",
     "chart.js": "^4.0.1",
     "concurrently": "^7.6.0",
     "cors": "^2.8.5",

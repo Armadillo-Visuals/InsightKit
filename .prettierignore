@@ -105,3 +105,4 @@ dist
 
 # Ignore all HTML files:
 *.html
+*.sql

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS StateCarbonEmissions (
+CREATE TABLE IF NOT EXISTS stateCarbonEmissions (
     "Year" INT,
     "AL" NUMERIC(16, 13),
     "AK" NUMERIC(15, 13),
