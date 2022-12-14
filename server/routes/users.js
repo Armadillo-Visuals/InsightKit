@@ -17,7 +17,7 @@ router.post('/login', userController.verifyUser, userController.getUserWidgets, 
 // then adds user_id/widget_id combo to join table
 // sends back updated user info
 router.patch('/widget', userController.addWidget, userController.getUserWidgets, (req, res) => {
-  return res.status(200).json(res.locals.widgets);
+  return res.status(200).json(res.locals.user);
 });
 
 module.exports = router;
