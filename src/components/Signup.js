@@ -2,7 +2,7 @@ import React from 'react';
 
 const Signup = ({ showLogin, setShowLogin }) => {
   const changePage = () => {
-    setShowLogin(!showLogin);
+    setShowLogin('login');
   };
 
   const handleSubmit = (event) => {
