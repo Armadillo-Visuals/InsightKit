@@ -27,7 +27,7 @@ const Login = ({ showLogin, setShowLogin }) => {
         <input type='text' name='username' placeholder='Username' />
         <input type='text' name='password' placeholder='Password' />
         <button type='submit'>Login</button>
-        <button onClick={changePage}>Signup</button>
+        <button onClick={changePage}>Main</button>
       </form>
     </div>
   );

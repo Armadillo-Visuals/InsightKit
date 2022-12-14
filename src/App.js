@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import './stylesheets/styles.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Main from './components/Main';
 
 const App = () => {
   const [state, setStateQuerey] = useState('');
@@ -39,9 +40,9 @@ const App = () => {
       {showLogin ? (
         <Login showLogin={showLogin} setShowLogin={setShowLogin} />
       ) : (
-        <Signup setShowLogin={setShowLogin} showLogin={showLogin} />
+        // <Signup setShowLogin={setShowLogin} showLogin={showLogin} />
+        <Main />
       )}
-      {/* <Main graphData={graphData} state={state} disaster={disaster} handleClick={handleClick} />  */}
     </div>
   );
 };
