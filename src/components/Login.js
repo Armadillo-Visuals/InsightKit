@@ -5,14 +5,8 @@ import axios from 'axios';
 import '../stylesheets/login.css';
 
 const Login = ({ showLogin, setShowLogin }) => {
-  const [showMain, setShowMain] = useState(false);
-
-  const changeToMain = () => {
-    setShowMain(true);
-  };
-
-  const changePage = () => {
-    setShowLogin(!showLogin);
+  const changePage = (page) => {
+    setShowLogin(page);
   };
 
   const handleSubmit = (event) => {
@@ -64,7 +58,8 @@ const Login = ({ showLogin, setShowLogin }) => {
         <input type='text' name='password' placeholder='Password' />
         <br></br>
         <button type='submit'>Login</button>
-        <button onClick={changePage}>Main</button>
+        <button onClick={() => changePage('main')}>Main</button>
+        <button onClick={() => changePage('signup')}>Sign up!</button>
       </form>
     </div>
   );

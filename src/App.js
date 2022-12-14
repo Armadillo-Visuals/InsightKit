@@ -8,7 +8,7 @@ const App = () => {
   const [state, setStateQuerey] = useState('');
   const [disaster, setDisaster] = useState('');
   const [graphData, setGraphData] = useState(null);
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState('login');
 
   // console.log(setShowLogin);
 
@@ -34,17 +34,23 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   };
-  return (
-    <div className='title'>
-      <h1>Environmental Tracker</h1>
-      {showLogin ? (
+
+  if (showLogin === 'login') {
+    return (
+      <div className='title'>
+        <h1>Environment-IQ</h1>
         <Login showLogin={showLogin} setShowLogin={setShowLogin} />
-      ) : (
-        // <Signup setShowLogin={setShowLogin} showLogin={showLogin} />
-        <Main />
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else if (showLogin === 'signup') {
+    return (
+      <div>
+        <Signup setShowLogin={setShowLogin} showLogin={showLogin} />
+      </div>
+    );
+  } else {
+    return <Main />;
+  }
 };
 
 export default App;
