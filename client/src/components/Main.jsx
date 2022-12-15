@@ -15,6 +15,7 @@ const Main = ({ setShowLogin }) => {
 
   // user's widgets are being stored inside of localStorage upon login. Grabbing the widgets from localStorage to render on page
   useEffect(() => {
+    console.log('updating: ', localStorage.getItem('widgets'))
     setUserWidgets(JSON.parse(localStorage.getItem('widgets')));
   }, []);
 
@@ -30,7 +31,8 @@ const Main = ({ setShowLogin }) => {
       parameter2,
       parameter3,
     });
-    setUserWidgets(response.data.widgets);
+    localStorage.setItem('widgets', JSON.stringify(response.data.widgets));
+    setUserWidgets(JSON.parse(localStorage.getItem('widgets')))
   };
 
   const deleteWidget = async (joinID) => {
@@ -38,7 +40,8 @@ const Main = ({ setShowLogin }) => {
     const response = await axios.delete(
       `http://localhost:3000/users/widget/${userID}/${joinID}`, 
     );
-    setUserWidgets(response.data.widgets);
+    localStorage.setItem('widgets', JSON.stringify(response.data.widgets));
+    setUserWidgets(JSON.parse(localStorage.getItem('widgets')))
   }
 
   return (

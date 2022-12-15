@@ -1,7 +1,7 @@
 .widgetGridWrapper {
   margin-left: 8px;
   background-color: #a2a452;
-  height: 100%;
+  height: minmax(100vh, fit-content);
   width: 100%;
   padding: 2em;
 }
