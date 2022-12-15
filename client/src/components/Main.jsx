@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import WidgetGridContainer from './widgetGridContainer';
 import Navbar from './NavBar';
 import '../stylesheets/main.css';
+import axios from 'axios';
 
 // endpoints from the backend for widgets
 // /data/disasters-over-time/:state/:type
@@ -17,12 +18,27 @@ const Main = () => {
     setUserWidgets(JSON.parse(localStorage.getItem('widgets')));
   }, []);
 
+  const addWidget = async (graphtype, datatype, parameter1, parameter2, parameter3) => {
+    // send a patch request to 'http://localhost:3000/users/widget' with the following:
+    // userID should come from Number(localStorage.getItem('id')) (or JSON.parse??)
+    // graphType, dataType, parameter1, parameter2, parameter3 values should come from sidebar event
+    const response = await axios.patch('http://localhost:3000/users/widget', {
+      userID: Number(localStorage.getItem('id')),
+      graphtype,
+      datatype,
+      parameter1,
+      parameter2,
+      parameter3,
+    });
+    setUserWidgets(response.data.widgets);
+  };
+
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
         <Navbar />
         <div className='bodyContainer'>
-          <Sidebar />
+          <Sidebar addWidget={addWidget} />
           <WidgetGridContainer widgets={userWidgets} />
         </div>
       </div>
