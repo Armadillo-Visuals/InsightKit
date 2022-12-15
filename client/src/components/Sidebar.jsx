@@ -30,21 +30,36 @@ const Sidebar = ({ addWidget }) => {
   return (
     <div className='sidebarWrapper'>
       <div className='sidebarContainer'>
-        <div className='disastersOverTimeSelector'>
-          <h1>Disasters Over Time</h1>
-          <StateDropdown handleSelect={(e) => setStateDOT(e.target.value)} />
-          <DisasterDropdown handleSelect={(e) => setDisasterDOT(e.target.value)} />
-          <button onClick={addDisastersOverTime}>+</button>
+        <div className='selectWidgetContainer'>
+          <div className='disastersOverTimeSelector'>
+            <div className='headers'>
+              DISASTERS OVER TIME
+            </div>
+            <StateDropdown handleSelect={(e) => setStateDOT(e.target.value)} />
+            <DisasterDropdown handleSelect={(e) => setDisasterDOT(e.target.value)} />
+            <button class='dropDownBtn' onClick={addDisastersOverTime}>+</button>
+          </div>
         </div>
-        <div className='disasterPieChartSelector'>
-          <h1>Disasters Pie Chart</h1>
-          <StateDropdown handleSelect={(e) => setStateDPC(e.target.value)} />
-          <button onClick={addDisastersAllTime}>+</button>
+        <div className='spacer'></div>
+        <div className='selectWidgetContainer'>
+          <div className='disasterPieChartSelector'>
+            <div className='headers'>
+              DISASTERS PIE CHART
+            </div>
+            <StateDropdown handleSelect={(e) => setStateDPC(e.target.value)} />
+            <button class='dropDownBtn' onClick={addDisastersAllTime}>+</button>
+          </div>
         </div>
-        <div className='carbonOverTimeSelector'>
-          <h1>Carbon Over Time</h1>
-          <StateDropdown handleSelect={(e) => setStateCOT(e.target.value)} />
-          <button onClick={addCarbonOverTime}>+</button>
+        <div className='spacer'></div>
+        <div className='selectWidgetContainer'>
+          <div className='carbonOverTimeSelector'>
+          <div className='headers'>
+            CARBON OVER TIME
+          </div>
+            <StateDropdown handleSelect={(e) => setStateCOT(e.target.value)} />
+            <button class='dropDownBtn' onClick={addCarbonOverTime}>+</button>
+          </div>
+          <div className='spacer'></div>
         </div>
       </div>
     </div>
