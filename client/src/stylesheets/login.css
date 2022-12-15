@@ -13,10 +13,10 @@
   background-color: #f3f5f0;
   width: 50%;
   height: 100%;
+  padding-top: 5%;
 }
 
 #leafLogo {
-  padding-top: 200px;
   height: 60px;
   width: auto;
   margin-left: auto;
