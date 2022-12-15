@@ -1,6 +1,7 @@
 import React from 'react';
 import DisastersOverTime from './DisastersOverTime';
 import CarbonOverTime from './CarbonOverTIme';
+import DisasterPieChart from './DisasterPieChart';
 
 const widgetTest = {
   graphType: 'pie',
@@ -26,6 +27,7 @@ const Widget = () => {
     <div className='widget'>
       <DisastersOverTime state='CA' disaster='Fire' />
       <CarbonOverTime state='CA' />
+      <DisasterPieChart state='CA' />
     </div>
   );
 };
