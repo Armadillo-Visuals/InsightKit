@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import axios from 'axios';
 import '../stylesheets/login.css';
 
@@ -26,15 +25,20 @@ const Login = ({ showLogin, setShowLogin }) => {
   // post request to the backend to authenticate the user
   async function authenticateUser(username, password) {
     try {
-      const response = await axios.post('/user', {
+      const response = await axios.post('/user/login', {
         username,
         password,
       });
-      console.log('response from server: ', response);
+      console.log('response from server: ', response.data);
+      const { id, firstname, lastname, username, password, users_widgets } = response.data;
+      // returns id, firstname, last name, username, hashed password, and array of widget objects
+
       // set cookies for the username and their active status
       // IDK if this actually works
-      localStorage.setItem('username', username);
-      localStorage.setItem('active', response);
+
+      // store the array of widget objects to have other widget pages to access that stored information
+      localStorage.setItem('username', JSON.stringify(username));
+      localStorage.setItem('widgets', JSON.stringify(users_widgets));
     } catch (error) {
       console.error(error);
     }
