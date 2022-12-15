@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Graph from './Graph';
 import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';

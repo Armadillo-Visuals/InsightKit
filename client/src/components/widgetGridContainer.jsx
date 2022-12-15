@@ -1,5 +1,5 @@
 import React from 'react';
-import Widget from './widget';
+import Widget from './Widget';
 import '../stylesheets/widgetGridContainer.css';
 
 const WidgetGridContainer = () => {
