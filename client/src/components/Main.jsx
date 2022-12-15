@@ -9,11 +9,11 @@ import '../stylesheets/main.css';
 // /data/carbon-over-time/:state
 // /data/disasters-all-time/:state
 
-const Main = () => {
+const Main = ({ setShowLogin }) => {
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
-        <Navbar />
+        <Navbar setShowLogin={setShowLogin} />
         <div className='bodyContainer'>
           <Sidebar />
           <WidgetGridContainer />

@@ -3,22 +3,22 @@ import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';
 
-const Login = ({ showLogin, setShowLogin }) => {
+const Login = ({ showLogin, setShowLogin, setSignedIn }) => {
   const changePage = (page) => {
     setShowLogin(page);
   };
 
-  const handleLoginAttempt = (event) => {
+  function handleLoginAttempt(event) {
     // event parameter is to target the value typed
     // event preventDefault to stop reload
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
     //use event.target[index of form].value to grab the values
-    console.log('usename: ', username);
+    console.log('username: ', username);
     console.log('password: ', password);
     authenticateUser(username, password);
-  };
+  }
 
   // post request to the backend to authenticate the user
   // returns id, firstname, last name, username, hashed password, and array of widget objects
@@ -43,6 +43,7 @@ const Login = ({ showLogin, setShowLogin }) => {
       localStorage.setItem('id', JSON.stringify(id));
       localStorage.setItem('firstName', first);
       localStorage.setItem('widgets', JSON.stringify(widgets));
+      localStorage.setItem('signedIn', 'true');
       changePage('main');
     } catch (error) {
       console.error(error);
