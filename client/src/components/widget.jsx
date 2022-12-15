@@ -3,8 +3,10 @@ import DisastersOverTime from './DisastersOverTime';
 import CarbonOverTime from './CarbonOverTIme';
 import DisasterPieChart from './DisasterPieChart';
 
-const Widget = ({ widgetInfo }) => {
-  const { graphtype, datatype, parameter1, parameter2, parameter3 } = widgetInfo;
+const Widget = ({ widgetInfo, deleteWidget }) => {
+  // NOTE: added an "id" property to each widget object which can be used to
+  // delete that widget from the user's widgets array
+  const { graphtype, datatype, parameter1, parameter2, parameter3, id } = widgetInfo;
 
   let renderedWidget;
 
@@ -26,7 +28,12 @@ const Widget = ({ widgetInfo }) => {
     renderedWidget = <DisastersOverTime state={parameter1} disaster={parameter2} />;
   }
 
-  return <div className='widget'>{renderedWidget}</div>;
+  return (
+    <div className='widget'>
+      <button onClick={() => deleteWidget(id)}>X</button>
+      {renderedWidget}
+    </div>
+  );
 };
 
 export default Widget;
