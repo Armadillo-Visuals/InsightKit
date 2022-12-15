@@ -1,6 +1,6 @@
 import React, { component } from 'react';
 import Sidebar from './Sidebar';
-import WidgetGridContainer from './WidgetGridContainer';
+import WidgetGridContainer from './widgetGridContainer';
 import Navbar from './NavBar';
 import '../stylesheets/main.css';
 
