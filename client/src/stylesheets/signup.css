@@ -1,0 +1,46 @@
+.signupWrapper {
+  background-color: #a2a452;
+  width: 800px;
+  height: 350px;
+  margin: auto;
+  margin-top: 250px;
+  border-radius: 20px;
+  display: grid;
+}
+
+#createAccountLogo {
+  padding-top: 20px;
+  height: 40px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signupFormContainer {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#submit {
+  height: 29px;
+  width: 210px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  border-radius: 20px;
+  border-color: #39543b;
+  color: white;
+  background-color: #39543b;
+}
+
+.trees {
+    position: fixed;  
+    bottom:0;
+    right:0;
+}
+
+#treeImage {
+    height: 500px; 
+    width: auto; 
+}

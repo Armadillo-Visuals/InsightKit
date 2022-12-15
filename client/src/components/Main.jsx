@@ -9,7 +9,7 @@ import '../stylesheets/main.css';
 // /data/carbon-over-time/:state
 // /data/disasters-all-time/:state
 
-const Main = () => {
+const Main = ({ setShowLogin }) => {
   const [userWidgets, setUserWidgets] = useState([]);
 
   // user's widgets are being stored inside of localStorage upon login. Grabbing the widgets from localStorage to render on page
@@ -20,7 +20,7 @@ const Main = () => {
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
-        <Navbar />
+        <Navbar setShowLogin={setShowLogin} />
         <div className='bodyContainer'>
           <Sidebar />
           <WidgetGridContainer widgets={userWidgets} />
