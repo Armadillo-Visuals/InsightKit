@@ -8,17 +8,17 @@ const Login = ({ showLogin, setShowLogin }) => {
     setShowLogin(page);
   };
 
-  const handleLoginAttempt = (event) => {
+  function handleLoginAttempt(event) {
     // event parameter is to target the value typed
     // event preventDefault to stop reload
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
     //use event.target[index of form].value to grab the values
-    console.log('usename: ', username);
+    console.log('username: ', username);
     console.log('password: ', password);
     authenticateUser(username, password);
-  };
+  }
 
   // post request to the backend to authenticate the user
   // returns id, firstname, last name, username, hashed password, and array of widget objects

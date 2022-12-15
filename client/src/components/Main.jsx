@@ -10,6 +10,15 @@ import '../stylesheets/main.css';
 // /data/disasters-all-time/:state
 
 const Main = () => {
+  // signout button functionality to remove local storage
+  // TODO: put the actual button in, waiting until after Josh and Mia merge to avoid conflicts
+  function handleSignOut() {
+    localStorage.removeItem('username');
+    localStorage.removeItem('id');
+    localStorage.removeItem('firstName');
+    localStorage.removeItem('widgets');
+  }
+
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
