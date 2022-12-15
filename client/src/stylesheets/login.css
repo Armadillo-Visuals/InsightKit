@@ -50,7 +50,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-input[type='text'] {
+input {
   text-align: center;
   color: #39543b;
   font-family: 'Cormorant Garamond', serif;
@@ -70,6 +70,7 @@ input[type='text'] {
   border-color: #39543b;
   color: #39543b;
   background-color: white;
+  cursor: pointer;
 }
 
 body {

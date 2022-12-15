@@ -42,7 +42,7 @@ const Main = ({ setShowLogin }) => {
   }
 
   return (
-    <div className='mainWrapper'>
+    // <div className='mainWrapper'>
       <div className='mainContainer'>
         <Navbar setShowLogin={setShowLogin} />
         <div className='bodyContainer'>
@@ -50,7 +50,7 @@ const Main = ({ setShowLogin }) => {
           <WidgetGridContainer widgets={userWidgets} deleteWidget={deleteWidget} />
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
