@@ -122,9 +122,13 @@ userController.getUserWidgets = async (req, res, next) => {
     // we're grabbing all graph information from the widgets table
     // grab the user id which we're getting from res.locals.user.id
     // join the two, effectively being able to send back all the graphs associate with the user
+    // const userWidgetsQuery = `
+    //   SELECT graphType, dataType, parameter1, parameter2, parameter3
+    //   FROM widgets WHERE id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
+    // `;
     const userWidgetsQuery = `
-      SELECT graphType, dataType, parameter1, parameter2, parameter3
-      FROM widgets WHERE id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
+      SELECT widgets.graphType, widgets.dataType, widgets.parameter1, widgets.parameter2, widgets.parameter3, users_widgets.id
+      FROM widgets JOIN users_widgets ON users_widgets.widget_id = widgets.id WHERE widgets.id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
     `;
     const { rows } = await usersDB.query(userWidgetsQuery, [res.locals.user.id]);
     // add those to the user info that we send back to the front end
@@ -134,6 +138,38 @@ userController.getUserWidgets = async (req, res, next) => {
     return next({
       log: `Error occurred in userController.getUserWidgets ${err}`,
       message: { err: 'Unable to get users widgets' },
+    });
+  }
+};
+
+userController.deleteWidget = async (req, res, next) => {
+  try {
+    // expects req.body to contain user id and widget id
+    const joinID = Number(req.params.joinID);
+    const userID = Number(req.params.userID);
+    // make sure a user exists in the database with that userID and get the rest of their info
+    const response = await usersDB.query('SELECT * FROM users WHERE id = $1', [userID]);
+    const user = response.rows[0];
+    // if a user doesn't exist with that ID, return an appropriate error message
+    if (!user) {
+      return next({
+        log: 'Error occurred in userController.deleteWidget middleware: no user found with user id',
+        message: { err: 'Unable to delete widget because no user found with that user id' },
+      });
+    }
+    // add user info to res.locals
+    res.locals.user = user;
+    // then remove user_id/widget_id combo from join table
+    const removeUserWidgetQuery = `
+      DELETE FROM users_widgets
+      WHERE id = $1
+    `;
+    await usersDB.query(removeUserWidgetQuery, [joinID]);
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error occurred in userController.deleteWidgetmiddleware ${err}`,
+      message: { err: "Unable to remove widget from user's widgets" },
     });
   }
 };
