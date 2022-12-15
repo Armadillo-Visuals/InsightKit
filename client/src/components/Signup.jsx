@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import '../stylesheets/signup.css';
 
 const Signup = ({ showLogin, setShowLogin }) => {
   const changePage = () => {
@@ -21,6 +22,7 @@ const Signup = ({ showLogin, setShowLogin }) => {
 
     //post request to the database to add the user
     createNewUser(firstName, lastName, username, password);
+    changePage();
   };
 
   async function createNewUser(firstName, lastName, username, password) {
@@ -48,32 +50,44 @@ const Signup = ({ showLogin, setShowLogin }) => {
   //   should send post request to the server to create a new user
 
   return (
-    <div>
-      <h1>Hello, this is the signup page</h1>
-      <button onClick={changePage}>Register Login</button>
+    <div className = 'mainContainer'>
+      <div className = 'trees'>
+        <img id = 'treeImage' src = 'https://i.imgur.com/BMsOvGT.png'></img>
+      </div>
+    <div className='signupWrapper'>
+      <img id='createAccountLogo' src='https://i.imgur.com/6S45Suy.png'></img>
+
       <div className='signupFormContainer'>
-        <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
           <label>
-            First Name
             <input type='text' id='fname' placeholder='First Name' />
           </label>
+          <br />
+          <br />
+
           <label>
-            Last Name
             <input type='text' id='lname' placeholder='Last Name' />
           </label>
+          <br />
+          <br />
+
           <label>
-            Username
             <input type='text' id='username' placeholder='Username' />
           </label>
+          <br />
+          <br />
+
           <label>
-            Password
             <input type='text' id='password' placeholder='Password' />
           </label>
-
-          <button type='submit'> Register</button>
+          <br />
+          <br />
+          <button id='submit' type='submit'>
+            Register
+          </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
