@@ -1,33 +1,107 @@
-.background {
-  background-image: url('./images/luca-bravo-ESkw2ayO2As-unsplash.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  /* width: 100vh; */
-  /* height: 500px; */
+.mainWrapper {
+  background-image: url('https://i.imgur.com/uBCt6Wa.jpg');
+  background-size: contain;
+  /* background-repeat: no-repeat;  */
   height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
+.loginWrapper {
+  background-color: #f3f5f0;
+  width: 50%;
+  height: 100%;
+}
+
+#leafLogo {
+  padding-top: 200px;
+  height: 60px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* need to add media query to handle resizing of screen */
+#homeLogo {
+  padding-top: 50px;
+  height: 55px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loginContents {
+  display: grid;
+}
+
+#loginLogo {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  height: 30px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .loginForm {
   display: flex;
-  width: 50%;
-  height: 40%;
-  background-color: #f4f0e1;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 input[type='text'] {
-  border-radius: 15px;
-  border-color: green;
+  text-align: center;
+  color: #39543b;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  height: 25px;
+  width: 200px;
+  border-radius: 20px;
+  border-color: #39543b;
+}
+
+#loginButton {
+  height: 29px;
+  width: 210px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  border-radius: 20px;
+  border-color: #39543b;
+  color: #39543b;
+  background-color: white;
 }
 
 body {
   margin: 0;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
+.signup {
+  display: grid;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#signUpLogo {
+  height: 30px;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+#signupButton {
+  height: 29px;
+  width: 210px;
+  margin-left: auto; 
+  margin-right: auto; 
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  border-radius: 20px;
+  border-color: #39543b;
+  color: #39543b;
+  background-color: white;
+}
 button[type='submit'] {
   background-color: primary;
 }

@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';
-// import leaf from '../stylesheets/images/The Environment (1).png';
 
 const Login = ({ showLogin, setShowLogin }) => {
   const changePage = (page) => {
     setShowLogin(page);
   };
 
-  const handleSubmit = (event) => {
+  const handleLoginAttempt = (event) => {
     // event parameter is to target the value typed
     // event preventDefault to stop reload
     event.preventDefault();
@@ -27,15 +26,20 @@ const Login = ({ showLogin, setShowLogin }) => {
   // post request to the backend to authenticate the user
   async function authenticateUser(username, password) {
     try {
-      const response = await axios.post('/user', {
+      const response = await axios.post('/user/login', {
         username,
         password,
       });
-      console.log('response from server: ', response);
+      console.log('response from server: ', response.data);
+      const { id, firstname, lastname, username, password, users_widgets } = response.data;
+      // returns id, firstname, last name, username, hashed password, and array of widget objects
+
       // set cookies for the username and their active status
       // IDK if this actually works
-      localStorage.setItem('username', username);
-      localStorage.setItem('active', response);
+
+      // store the array of widget objects to have other widget pages to access that stored information
+      localStorage.setItem('username', JSON.stringify(username));
+      localStorage.setItem('widgets', JSON.stringify(users_widgets));
     } catch (error) {
       console.error(error);
     }
@@ -50,21 +54,43 @@ const Login = ({ showLogin, setShowLogin }) => {
   };
 
   return (
-    <div className='background'>
-      {/* <img src={leaf} height='50px' width='50px'></img> */}
-      <div className='loginForm'>
-        <h1>Login</h1>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <input type='text' name='username' placeholder='Username' />
-          <br></br>
-          <input type='text' name='password' placeholder='Password' />
-          <br></br>
-          <button type='submit'>Login</button>
-          <button className='btn' onClick={() => changePage('main')}>
-            Main
+    <div className='mainWrapper'>
+      <div className='loginWrapper'>
+        <div className='loginContents'>
+          <img id='leafLogo' src='https://i.imgur.com/SVGPzBH.png'></img>
+          <br />
+          <img id='homeLogo' src='https://i.imgur.com/mrT2pHx.png'></img>
+          <br />
+          <img id='loginLogo' src='https://i.imgur.com/Oi5B7XJ.png'></img>
+        </div>
+
+        <div className='loginForm'>
+          <form onSubmit={(e) => handleLoginAttempt(e)}>
+            <input type='text' name='username' placeholder='Username' />
+            <br />
+            <br />
+
+            <input type='text' name='password' placeholder='Password' />
+            <br />
+            <br />
+            <button id='loginButton' type='submit'>
+              Enter
+            </button>
+          </form>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div className='signup'>
+          <img id='signUpLogo' src='https://i.imgur.com/6S45Suy.png'></img>
+          <br />
+
+          <button id='signupButton' onClick={() => changePage('signup')}>
+            Sign up!
           </button>
-          <button onClick={() => changePage('signup')}>Sign up!</button>
-        </form>
+        </div>
       </div>
     </div>
   );

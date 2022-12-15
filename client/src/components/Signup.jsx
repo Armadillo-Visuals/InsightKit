@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Signup = ({ showLogin, setShowLogin }) => {
   const changePage = () => {
@@ -7,14 +8,42 @@ const Signup = ({ showLogin, setShowLogin }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const firstName = event.target[0].value;
+    const lastName = event.target[1].value;
+    const username = event.target[2].value;
+    const password = event.target[3].value;
+
     // this handle submit will console log the input fields and their values using event.target[index of form].value
-    console.log('First Name: ', event.target[0].value);
-    console.log('Last Name: ', event.target[1].value);
-    console.log('Username: ', event.target[2].value);
-    console.log('Password: ', event.target[3].value);
-    // form will also make a request to the back end storing the relevant data in a database
-    // axios request goes here
+    console.log('First Name: ', firstName);
+    console.log('Last Name: ', lastName);
+    console.log('Username: ', username);
+    console.log('Password: ', password);
+
+    //post request to the database to add the user
+    createNewUser(firstName, lastName, username, password);
   };
+
+  async function createNewUser(firstName, lastName, username, password) {
+    try {
+      const response = await axios.post('http://localhost:3000/users/signup', {
+        username,
+        password,
+        firstName,
+        lastName,
+      });
+      console.log(response.data);
+      const user = response.data.username;
+      const firstname = response.data.firstname;
+      const id = response.data.id;
+
+      // set local storage for the first name, username, and widgets
+      localStorage.setItem('id', JSON.stringify(id));
+      localStorage.setItem('firstName', firstname);
+      localStorage.setItem('username', user);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   //   should send post request to the server to create a new user
 

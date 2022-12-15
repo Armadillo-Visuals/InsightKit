@@ -20,7 +20,9 @@ userController.createUser = async (req, res, next) => {
     const userData = [firstName, lastName, username, hashedPassword];
     const response = await usersDB.query(createUserQuery, userData);
     res.locals.user = response.rows[0];
-    res.locals.user.widgets = [];
+    // Commented out because we don't need to return widgets on creation
+    //  and was causing a nested object on the front end
+    // res.locals.user.widgets = [];
     return next();
   } catch (err) {
     return next({
