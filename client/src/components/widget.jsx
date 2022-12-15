@@ -1,6 +1,6 @@
 import React from 'react';
 import DisastersOverTime from './DisastersOverTime';
-import CarbonOverTime from './CarbonOverTIme';
+import CarbonOverTime from './CarbonOverTime';
 import DisasterPieChart from './DisasterPieChart';
 import '../stylesheets/widget.css';
 
