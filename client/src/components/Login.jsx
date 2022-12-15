@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';
 
@@ -77,18 +78,19 @@ const Login = ({ showLogin, setShowLogin }) => {
             </button>
           </form>
         </div>
-    < br />
-    < br />
-    < br />
-    < br />
+        <br />
+        <br />
+        <br />
+        <br />
 
         <div className='signup'>
           <img id='signUpLogo' src='https://i.imgur.com/6S45Suy.png'></img>
-          < br />
-   
-          <button id='signupButton' onClick={() => changePage('signup')}>Sign up!</button>
+          <br />
+
+          <button id='signupButton' onClick={() => changePage('signup')}>
+            Sign up!
+          </button>
         </div>
-        
       </div>
     </div>
   );
