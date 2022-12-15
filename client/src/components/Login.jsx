@@ -50,7 +50,7 @@ const Login = ({ showLogin, setShowLogin }) => {
   }
 
   return (
-    <div className='mainWrapper'>
+    <div className='mainLoginWrapper'>
       <div className='loginWrapper'>
         <div className='loginContents'>
           <img id='leafLogo' src='https://i.imgur.com/SVGPzBH.png'></img>
