@@ -24,6 +24,7 @@ const Login = ({ showLogin, setShowLogin }) => {
   //  username and password for authentication
 
   // post request to the backend to authenticate the user
+  // returns id, firstname, last name, username, hashed password, and array of widget objects
   async function authenticateUser(username, password) {
     try {
       const response = await axios.post('http://localhost:3000/users/login', {
@@ -31,32 +32,25 @@ const Login = ({ showLogin, setShowLogin }) => {
         password,
       });
       console.log('response from server: ', response.data);
-      // const user = response.data.username;
-      // const id = response.data.id;
-      // const widgets = response.data.widgets;
-      // const first = response.data.firstname;
-      // returns id, firstname, last name, username, hashed password, and array of widget objects
+      const user = response.data.username;
+      const id = response.data.id;
+      const widgets = response.data.widgets;
+      const first = response.data.firstname;
+      console.log('extracted out properties');
 
       // set cookies for the username and their active status
       // IDK if this actually works
 
       // store the array of widget objects to have other widget pages to access that stored information
-      // localStorage.setItem('username', user);
-      // localStorage.setItem('id', JSON.stringify(id));
-      // localStorage.setItem('firstName', first);
-      // localStorage.setItem('widgets', JSON.stringify(widgets));
+      localStorage.setItem('username', user);
+      localStorage.setItem('id', JSON.stringify(id));
+      localStorage.setItem('firstName', first);
+      localStorage.setItem('widgets', JSON.stringify(widgets));
+      changePage('main');
     } catch (error) {
       console.error(error);
     }
   }
-
-  // function to see if the user is active, and therefore to show the main component
-  const checkCookies = () => {
-    const active = localStorage.getItem('active');
-    if (active === true) {
-      // changeToMain();
-    }
-  };
 
   return (
     <div className='mainWrapper'>

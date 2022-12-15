@@ -45,6 +45,10 @@ const Signup = ({ showLogin, setShowLogin }) => {
     }
   }
 
+  // TODO: have the form fields empty out after input
+  // TODO: display something to indicate to the user they created an account
+  //  and should return to the login page
+
   //   should send post request to the server to create a new user
 
   return (
