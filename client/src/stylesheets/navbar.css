@@ -1,0 +1,71 @@
+.navBarWrapper {
+  background-color: #39543b;
+  color: #f4f0e1;
+}
+
+.navBarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.titleLogo {
+  width: 400px;
+}
+
+.navigation {
+  background-color: black;
+}
+
+.leafLogo {
+  width: 25px;
+  float: left;
+}
+
+.logout {
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  right: -20px;
+  /* bottom: -4px; */
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity 0.45s;
+  -webkit-transition: opacity 0.35s;
+}
+
+.logoutButton {
+  text-decoration: none;
+  float: right;
+  padding: 12px;
+  margin: 15px;
+  color: white;
+  width: 25px;
+  background-color: black;
+  transition: width 0.35s;
+  -webkit-transition: width 0.35s;
+  overflow: hidden;
+}
+
+a:hover {
+  width: 100px;
+}
+
+a:hover .logout {
+  opacity: 0.9;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  padding-left: 1rem;
+} */ ;
