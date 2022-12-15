@@ -1,10 +1,10 @@
 import React from 'react';
 
-const disasterDropdown = () => {
+const disasterDropdown = ({ handleSelect }) => {
   return (
     <div className='disasterDropdown'>
       <label htmlFor='disaster'></label>
-      <select className='dropbtn' id='disaster' name='disaster'>
+      <select className='dropbtn' id='disaster' name='disaster' onChange={handleSelect}>
         <option value='Flood'>Flood</option>
         <option value='Fire'>Fire</option>
         <option value='Earthquake'>Earthquake</option>

@@ -64,7 +64,7 @@ userController.verifyUser = async (req, res, next) => {
 userController.addWidget = async (req, res, next) => {
   try {
     // expects req.body to contain user id and desired widget combo (i.e. data type, graph type, parameters)
-    const { userID, graphType, dataType, parameter1, parameter2, parameter3 } = req.body;
+    const { userID, graphtype, datatype, parameter1, parameter2, parameter3 } = req.body;
     // make sure a user exists in the database with that userID and get the rest of their info
     const response = await usersDB.query('SELECT * FROM users WHERE id = $1', [userID]);
     const user = response.rows[0];
@@ -81,13 +81,13 @@ userController.addWidget = async (req, res, next) => {
     const getWidgetQuery = `
       SELECT id FROM widgets
       WHERE 
-        graphType = $1 AND
-        dataType = $2 AND
+        graphtype = $1 AND
+        datatype = $2 AND
         parameter1 = $3 AND
         parameter2 = $4 AND
         parameter3 = $5
     `;
-    const widgetParams = [graphType, dataType, parameter1, parameter2, parameter3];
+    const widgetParams = [graphtype, datatype, parameter1, parameter2, parameter3];
     const { rows } = await usersDB.query(getWidgetQuery, widgetParams);
     let widget = rows[0];
     // if widget doesn't yet exist, add it to the widgets table

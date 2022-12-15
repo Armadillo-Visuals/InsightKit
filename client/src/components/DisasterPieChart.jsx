@@ -7,20 +7,11 @@ const DisasterPieChart = ({ state }) => {
   const [data, setData] = useState(null);
   const [labels, setLabels] = useState([]);
 
-  // const labels = [
-  //   'Coastal storm',
-  //   'Drought',
-  //   'Earthquake',
-  //   'Fire',
-  //   'Flood',
-  //   'Freezing',
-  //   'Hurricane',
-  // ];
-
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/data/disasters-all-time/${state}`);
+        console.log('response object: ', response);
         setData(Object.values(response.data));
         setLabels(Object.keys(response.data));
       } catch (err) {
@@ -46,7 +37,6 @@ const DisasterPieChart = ({ state }) => {
     });
     legend.chart.update();
   }
-  console.log(data);
 
   return (
     <div className='pie' id='mydiv'>
