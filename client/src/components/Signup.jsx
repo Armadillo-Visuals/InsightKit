@@ -45,12 +45,16 @@ const Signup = ({ showLogin, setShowLogin }) => {
     }
   }
 
+  // TODO: have the form fields empty out after input
+  // TODO: display something to indicate to the user they created an account
+  //  and should return to the login page
+
   //   should send post request to the server to create a new user
 
   return (
     <div>
       <h1>Hello, this is the signup page</h1>
-      <button onClick={changePage}>Register Login</button>
+      <button onClick={changePage}>Login</button>
       <div className='signupFormContainer'>
         <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
