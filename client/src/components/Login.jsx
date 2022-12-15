@@ -25,20 +25,25 @@ const Login = ({ showLogin, setShowLogin }) => {
   // post request to the backend to authenticate the user
   async function authenticateUser(username, password) {
     try {
-      const response = await axios.post('/user/login', {
+      const response = await axios.post('http://localhost:3000/users/login', {
         username,
         password,
       });
       console.log('response from server: ', response.data);
-      const { id, firstname, lastname, username, password, users_widgets } = response.data;
+      // const user = response.data.username;
+      // const id = response.data.id;
+      // const widgets = response.data.widgets;
+      // const first = response.data.firstname;
       // returns id, firstname, last name, username, hashed password, and array of widget objects
 
       // set cookies for the username and their active status
       // IDK if this actually works
 
       // store the array of widget objects to have other widget pages to access that stored information
-      localStorage.setItem('username', JSON.stringify(username));
-      localStorage.setItem('widgets', JSON.stringify(users_widgets));
+      // localStorage.setItem('username', user);
+      // localStorage.setItem('id', JSON.stringify(id));
+      // localStorage.setItem('firstName', first);
+      // localStorage.setItem('widgets', JSON.stringify(widgets));
     } catch (error) {
       console.error(error);
     }
