@@ -1,26 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import { Pie } from 'react-chartjs-2';
+import axios from 'axios';
 
-// const typeData = {
-//   Fires: 100,
-//   Storms: 50,
-//   Earthquakes: 1,
-//   Hurricanes: 5,
-//   Freezing: 10,
-// };
+const DisasterPieChart = ({ state }) => {
+  const [data, setData] = useState(null);
 
-const PieChart = ({ typeData }) => {
-  console.log(typeData);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/data/disasters-all-time/${state}`);
+        setData(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  const labels = [];
-  const data = [];
-  if (typeData) {
-    for (const disasterType in typeData) {
-      labels.push(disasterType);
-      data.push(typeData[disasterType]);
-    }
-  }
+    getData();
+  }, []);
 
   // Append '4d' to the colors (alpha channel), except for the hovered index
   function handleHover(evt, item, legend) {
@@ -37,45 +34,57 @@ const PieChart = ({ typeData }) => {
     });
     legend.chart.update();
   }
+  console.log(data);
 
   return (
-    <Pie
-      className='pie'
-      datasetIdKey='byType'
-      data={{
-        labels,
-        datasets: [
-          {
-            label: 'Disaster Types',
-            backgroundColor: [
-              '#3e95cd',
-              '#8e5ea2',
-              '#3cba9f',
-              '#e8c3b9',
-              '#c45850',
-              '#f2bf77',
-              '#eb91e9',
-              '#9fde92',
-            ],
-            data: data,
+    <div className='pie' id='mydiv'>
+      <h2>{`${state} Carbon Emissions by Year`}</h2>
+      <Pie
+        className='pie'
+        datasetIdKey='byType'
+        data={{
+          labels: [
+            'Coastal storm',
+            'Drought',
+            'Earthquake',
+            'Fire',
+            'Flood',
+            'Freezing',
+            'Hurricane',
+          ],
+          datasets: [
+            {
+              label: 'Disaster Types',
+              data,
+              backgroundColor: [
+                '#3e95cd',
+                '#8e5ea2',
+                '#3cba9f',
+                '#e8c3b9',
+                '#c45850',
+                '#f2bf77',
+                '#eb91e9',
+                '#9fde92',
+              ],
+            },
+          ],
+        }}
+        options={{
+          plugins: {
+            legend: {
+              onHover: handleHover,
+              onLeave: handleLeave,
+            },
           },
-        ],
-      }}
-      options={{
-        plugins: {
-          legend: {
-            onHover: handleHover,
-            onLeave: handleLeave,
+          elements: {
+            arc: {
+              borderWidth: 0,
+            },
           },
-        },
-        elements: {
-          arc: {
-            borderWidth: 0,
-          },
-        },
-      }}
-    />
+        }}
+      />
+    </div>
   );
 };
 
-export default PieChart;
+export default DisasterPieChart;
