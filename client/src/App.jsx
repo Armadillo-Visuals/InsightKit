@@ -4,47 +4,22 @@ import Signup from './components/Signup';
 import Main from './components/Main';
 
 const App = () => {
-  const [state, setStateQuerey] = useState('');
-  const [disaster, setDisaster] = useState('');
-  const [graphData, setGraphData] = useState(null);
   const [showLogin, setShowLogin] = useState('login');
-  const [signedIn, setSignedIn] = useState(false);
 
-  // check if the user is already signed in ()
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/api/disaster/AL/Flood')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setGraphData(data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // const handleClick = () => {
-  //   const state = document.getElementById('state').value;
-  //   const disaster = document.getElementById('disaster').value;
-  //   setStateQuerey(state);
-  //   setDisaster(disaster);
-  //   fetch(`http://localhost:3000/api/disaster/${state}/${disaster}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setGraphData(data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
+  // checks if the user has already signed in previously
   let isSignedIn = localStorage.getItem('signedIn');
 
+  // if the user is already signed in, send them to main right away
   if (JSON.parse(isSignedIn) || showLogin === 'main') {
-    return <Main setShowLogin={setShowLogin} setSignedIn={setSignedIn} />;
+    return <Main setShowLogin={setShowLogin} />;
+    // default the user to the login page
   } else if (showLogin === 'login') {
     return (
       <div className='title'>
-        <Login showLogin={showLogin} setShowLogin={setShowLogin} setSignedIn={setSignedIn} />
+        <Login showLogin={showLogin} setShowLogin={setShowLogin} />
       </div>
     );
+    // render the signup page after page change in login
   } else if (showLogin === 'signup') {
     return (
       <div>
