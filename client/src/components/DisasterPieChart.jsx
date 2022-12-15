@@ -11,7 +11,6 @@ const DisasterPieChart = ({ state }) => {
     const getData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/data/disasters-all-time/${state}`);
-        console.log('response object: ', response);
         setData(Object.values(response.data));
         setLabels(Object.keys(response.data));
       } catch (err) {
@@ -75,7 +74,10 @@ const DisasterPieChart = ({ state }) => {
               borderWidth: 0,
             },
           },
+          // responsive: true,
+          // maintainAspectRatio: false
         }}
+        // width={'100%'}
       />
     </div>
   );

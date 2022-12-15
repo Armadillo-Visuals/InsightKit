@@ -1,12 +1,11 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .bodyContainer {
   display: flex;
   flex-direction: row;
   background-color: #f4f0e1;
-  height: 100%;;
+  /* height: 100%; */
 }

@@ -36,6 +36,11 @@ const DisastersOverTime = ({ disaster, state }) => {
             },
           ],
         }}
+        // width='100%'
+        // options={{ 
+        //   responsive: true,
+        //   maintainAspectRatio: false
+        // }}
       />
     </div>
   );

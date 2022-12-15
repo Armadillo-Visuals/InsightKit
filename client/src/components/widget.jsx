@@ -31,7 +31,7 @@ const Widget = ({ widgetInfo, deleteWidget }) => {
 
   return (
     <div className='widget'>
-      <button onClick={() => deleteWidget(id)}>X</button>
+      <button className='widgetDeleteBtn' onClick={() => deleteWidget(id)}>X</button>
       {renderedWidget}
     </div>
   );
