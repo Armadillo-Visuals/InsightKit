@@ -4,19 +4,18 @@ import axios from 'axios';
 import '../stylesheets/login.css';
 
 const Login = ({ showLogin, setShowLogin, setSignedIn }) => {
+  // change the page to either main or submit
   const changePage = (page) => {
     setShowLogin(page);
   };
 
+  // Event handler for the login form
   function handleLoginAttempt(event) {
-    // event parameter is to target the value typed
     // event preventDefault to stop reload
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-    //use event.target[index of form].value to grab the values
-    console.log('username: ', username);
-    console.log('password: ', password);
+    // authenticate the user with the given username and password
     authenticateUser(username, password);
   }
 
@@ -28,22 +27,18 @@ const Login = ({ showLogin, setShowLogin, setSignedIn }) => {
         username,
         password,
       });
-      console.log('response from server: ', response.data);
       const user = response.data.username;
       const id = response.data.id;
       const widgets = response.data.widgets;
       const first = response.data.firstname;
-      console.log('extracted out properties');
 
-      // set cookies for the username and their active status
-      // IDK if this actually works
-
-      // store the array of widget objects to have other widget pages to access that stored information
+      // set the values on localStorage. Local Storage values must always be strings
       localStorage.setItem('username', user);
       localStorage.setItem('id', JSON.stringify(id));
       localStorage.setItem('firstName', first);
       localStorage.setItem('widgets', JSON.stringify(widgets));
       localStorage.setItem('signedIn', 'true');
+      // render the main page instead of the login page
       changePage('main');
     } catch (error) {
       console.error(error);
