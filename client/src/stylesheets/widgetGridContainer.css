@@ -4,12 +4,16 @@
   height: minmax(100vh, fit-content);
   width: 100%;
   padding: 2em;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .widgetGridContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 10px;
+  /* justify-content: space-around; */
+  width: fit-content;
+  gap: 40px;
   height: 100%;
 }

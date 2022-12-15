@@ -20,14 +20,18 @@
   align-items: center;
   justify-content: center;
   color: #39543b;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .widgetDeleteBtn {
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: 1em;
   left: 1em;
   background-color: #a2a452;
-  border-radius: 3px;
+  border-radius: 5px;
+  border: 1px solid #f4f0e1;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   color: #f4f0e1;
   cursor: pointer;
   border: none;

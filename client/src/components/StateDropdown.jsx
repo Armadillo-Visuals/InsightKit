@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/dropdown.css';
 
 const StateDropdown = ({ handleSelect }) => {
   return (
