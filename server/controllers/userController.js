@@ -46,7 +46,6 @@ userController.verifyUser = async (req, res, next) => {
     // use bcrypt.compare to make sure that the passed in password, once hashed, matches the hashed password in the database.
     if (user && (await bcrypt.compare(req.body.password, user.password))) {
       // if yes, go on to next middleware function, adding user info to res.locals
-      // NOTE: ONCE WE HAVE A WIDGETS TABLE, WE'LL ALSO WANT TO SEND BACK USER'S WIDGETS
       res.locals.user = user;
       return next();
     }
@@ -112,7 +111,7 @@ userController.addWidget = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `Error occurred in userController.addWidgetmiddleware ${err}`,
-      message: { err: 'Unable to verify user' },
+      message: { err: 'Unable to add widget to user database' },
     });
   }
 };
@@ -127,7 +126,7 @@ userController.getUserWidgets = async (req, res, next) => {
       SELECT graphType, dataType, parameter1, parameter2, parameter3
       FROM widgets WHERE id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
     `;
-    const { rows } = await usersDB.query(userWidgetsQuery, [req.body.userID]);
+    const { rows } = await usersDB.query(userWidgetsQuery, [res.locals.user.id]);
     // add those to the user info that we send back to the front end
     res.locals.user.widgets = !rows.length ? [] : rows;
     return next();
