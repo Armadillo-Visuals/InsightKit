@@ -9,18 +9,18 @@ router.get(
   '/disasters-over-time/:state/:type',
   disastersController.getDisastersOverTime,
   (req, res) => {
-    res.status(200).json(res.locals.disastersOverTime);
+   return res.status(200).json(res.locals.disastersOverTime);
   },
 );
 
 // endpoint for getting carbon emissions for a single state over time
 router.get('/carbon-over-time/:state', carbonController.getCarbonOverTime, (req, res) => {
-  res.status(200).json(res.locals.carbonOverTime);
+  return res.status(200).json(res.locals.carbonOverTime);
 });
 
 // endpoint for populating a pie chart with percentage of each disaster type in a single state 1956-2022
 router.get('/disasters-all-time/:state', disastersController.getDisastersAllTime, (req, res) => {
-  res.status(200).json(res.locals.disastersAllTime);
+  return res.status(200).json(res.locals.disastersAllTime);
 });
 
 module.exports = router;
