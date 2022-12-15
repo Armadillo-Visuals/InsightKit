@@ -3,33 +3,30 @@ import DisastersOverTime from './DisastersOverTime';
 import CarbonOverTime from './CarbonOverTIme';
 import DisasterPieChart from './DisasterPieChart';
 
-const widgetTest = {
-  graphType: 'pie',
-  dataType: 'disasters-all-time',
-  parameter1: 'CA',
-  parameter2: null,
-  parameter3: null,
-};
+const Widget = ({ widgetInfo }) => {
+  const { graphtype, datatype, parameter1, parameter2, parameter3 } = widgetInfo;
 
-const Widget = () => {
-  // const { graphType, dataType, parameter1, parameter2, parameter3 } = widgetInfo;
+  let renderedWidget;
 
   // if the graph type is pie and the data type is disasters-all-time, render piechart.jsx
   // with parameter1
+  if (graphtype === 'pie' && datatype === 'disasters-all-time') {
+    renderedWidget = <DisasterPieChart state={parameter1} />;
+  }
 
   // if the graph type is line and the data type is carbon-over-time, render CarbonOverTime.jsx
   // with parameter 1
+  if (graphtype === 'line' && datatype === 'carbon-over-time') {
+    renderedWidget = <CarbonOverTime state={parameter1} />;
+  }
 
   // if the graph type is line and the data type is disasters-over-time, render graph.jsx
   // with parameters 1 and 2
+  if (graphtype === 'line' && datatype === 'disasters-over-time') {
+    renderedWidget = <DisastersOverTime state={parameter1} disaster={parameter2} />;
+  }
 
-  return (
-    <div className='widget'>
-      {/* <DisastersOverTime state='CA' disaster='Fire' />
-      <CarbonOverTime state='CA' /> */}
-      <DisasterPieChart state='CA' />
-    </div>
-  );
+  return <div className='widget'>{renderedWidget}</div>;
 };
 
 export default Widget;
