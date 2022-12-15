@@ -122,9 +122,13 @@ userController.getUserWidgets = async (req, res, next) => {
     // we're grabbing all graph information from the widgets table
     // grab the user id which we're getting from res.locals.user.id
     // join the two, effectively being able to send back all the graphs associate with the user
+    // const userWidgetsQuery = `
+    //   SELECT graphType, dataType, parameter1, parameter2, parameter3
+    //   FROM widgets WHERE id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
+    // `;
     const userWidgetsQuery = `
-      SELECT graphType, dataType, parameter1, parameter2, parameter3
-      FROM widgets WHERE id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
+      SELECT widgets.graphType, widgets.dataType, widgets.parameter1, widgets.parameter2, widgets.parameter3, users_widgets.id
+      FROM widgets JOIN users_widgets ON users_widgets.widget_id = widgets.id WHERE widgets.id IN (SELECT widget_id FROM users_widgets WHERE user_id = $1)
     `;
     const { rows } = await usersDB.query(userWidgetsQuery, [res.locals.user.id]);
     // add those to the user info that we send back to the front end
@@ -141,7 +145,7 @@ userController.getUserWidgets = async (req, res, next) => {
 userController.deleteWidget = async (req, res, next) => {
   try {
     // expects req.body to contain user id and widget id
-    const { userID, widgetID } = req.body;
+    const { userID, joinID } = req.body;
     // make sure a user exists in the database with that userID and get the rest of their info
     const response = await usersDB.query('SELECT * FROM users WHERE id = $1', [userID]);
     const user = response.rows[0];
@@ -157,9 +161,9 @@ userController.deleteWidget = async (req, res, next) => {
     // then remove user_id/widget_id combo from join table
     const removeUserWidgetQuery = `
       DELETE FROM users_widgets
-      WHERE user_id = $1 AND widget_id = $2
+      WHERE id = $1
     `;
-    await usersDB.query(removeUserWidgetQuery, [userID, widgetID]);
+    await usersDB.query(removeUserWidgetQuery, [joinID]);
     return next();
   } catch (err) {
     return next({

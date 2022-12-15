@@ -4,6 +4,8 @@ import CarbonOverTime from './CarbonOverTIme';
 import DisasterPieChart from './DisasterPieChart';
 
 const Widget = ({ widgetInfo }) => {
+  // NOTE: added an "id" property to each widget object which can be used to
+  // delete that widget from the user's widgets array
   const { graphtype, datatype, parameter1, parameter2, parameter3 } = widgetInfo;
 
   let renderedWidget;
