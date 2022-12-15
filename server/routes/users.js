@@ -9,7 +9,7 @@ router.post('/signup', userController.createUser, (req, res) => {
 
 // endpoint to verify user on login AND respond with user info (including widgets)
 router.post('/login', userController.verifyUser, userController.getUserWidgets, (req, res) => {
-  return res.status(200).json(res.locals.user);
+  return res.status(201).json(res.locals.user);
 });
 
 // expects req.body to contain user id and desired widget combo (i.e. data type, graph type, parameters)
