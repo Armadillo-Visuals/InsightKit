@@ -30,16 +30,16 @@ const Login = ({ showLogin, setShowLogin }) => {
         username,
         password,
       });
-      console.log('response from server: ', response);
-      const { id, firstname, lastname, username, password, widgets } = response;
+      console.log('response from server: ', response.data);
+      const { id, firstname, lastname, username, password, users_widgets } = response.data;
       // returns id, firstname, last name, username, hashed password, and array of widget objects
 
       // set cookies for the username and their active status
       // IDK if this actually works
 
       // store the array of widget objects to have other widget pages to access that stored information
-      localStorage.setItem('username', username);
-      localStorage.setItem('active', response);
+      localStorage.setItem('username', JSON.stringify(username));
+      localStorage.setItem('widgets', JSON.stringify(users_widgets));
     } catch (error) {
       console.error(error);
     }
