@@ -9,7 +9,7 @@ const App = () => {
   const [graphData, setGraphData] = useState(null);
   const [showLogin, setShowLogin] = useState('login');
 
-  // console.log(setShowLogin);
+  // check if the user is already signed in ()
 
   // useEffect(() => {
   //   fetch('http://localhost:3000/api/disaster/AL/Flood')
