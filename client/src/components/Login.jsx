@@ -87,7 +87,7 @@ const Login = ({ showLogin, setShowLogin }) => {
           <img id='signUpLogo' src='https://i.imgur.com/6S45Suy.png'></img>
           <br />
 
-          <button id='signupButton' onClick={() => changePage('signup')}>
+          <button id='signupButton' onClick={() => changePage('thenrajnsd')}>
             Sign up!
           </button>
         </div>
