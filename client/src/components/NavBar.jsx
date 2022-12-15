@@ -20,10 +20,10 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <div className='navBarWrapper'>
       <nav className='navBarContainer'>
-        <img src={logo} className='titleLogo'></img>
+        <img src='https://i.imgur.com/bfLAokI.png' className='titleLogo'></img>
         <div className='navigation'>
           <a className='logoutButton'>
-            <img src={leafLogo} className='leafLogo'></img>
+            <img src='https://i.imgur.com/KcXKTPo.png' className='leafLogo'></img>
             <button onClick={handleSignOut} className='logout'>
               Logout
             </button>
