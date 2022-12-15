@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import WidgetGridContainer from './widgetGridContainer';
 import Navbar from './NavBar';
@@ -10,13 +10,20 @@ import '../stylesheets/main.css';
 // /data/disasters-all-time/:state
 
 const Main = ({ setShowLogin }) => {
+  const [userWidgets, setUserWidgets] = useState([]);
+
+  // user's widgets are being stored inside of localStorage upon login. Grabbing the widgets from localStorage to render on page
+  useEffect(() => {
+    setUserWidgets(JSON.parse(localStorage.getItem('widgets')));
+  }, []);
+
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
         <Navbar setShowLogin={setShowLogin} />
         <div className='bodyContainer'>
           <Sidebar />
-          <WidgetGridContainer />
+          <WidgetGridContainer widgets={userWidgets} />
         </div>
       </div>
     </div>
@@ -24,19 +31,3 @@ const Main = ({ setShowLogin }) => {
 };
 
 export default Main;
-
-{
-  /* <Search handleClick={props.handleClick} />
-{props.graphData?.carbon && (
-  <Graph
-    className='graph'
-    graphData={props.graphData}
-    state={props.state || 'AL'}
-    disaster={props.disaster || 'Disaster'}
-  />
-)}
-<div className='pie'>
-  <h2>Disasters by State</h2>
-  <PieChart id='pieCanvas' typeData={props.graphData?.typeData || null} />
-</div> */
-}
