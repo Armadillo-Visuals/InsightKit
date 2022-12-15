@@ -20,4 +20,10 @@ router.patch('/widget', userController.addWidget, userController.getUserWidgets,
   return res.status(200).json(res.locals.user);
 });
 
+// deletes a widget from a user's widgets (i.e. from users_widgets join table) but NOT from entire DB
+// returns updated user info with that widget removed from user widgets array
+router.delete('/widget', userController.deleteWidget, userController.getUserWidgets, (req, res) => {
+  return res.status(200).json(res.locals.user);
+});
+
 module.exports = router;

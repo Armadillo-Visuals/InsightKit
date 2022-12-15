@@ -138,4 +138,35 @@ userController.getUserWidgets = async (req, res, next) => {
   }
 };
 
+userController.deleteWidget = async (req, res, next) => {
+  try {
+    // expects req.body to contain user id and widget id
+    const { userID, widgetID } = req.body;
+    // make sure a user exists in the database with that userID and get the rest of their info
+    const response = await usersDB.query('SELECT * FROM users WHERE id = $1', [userID]);
+    const user = response.rows[0];
+    // if a user doesn't exist with that ID, return an appropriate error message
+    if (!user) {
+      return next({
+        log: 'Error occurred in userController.deleteWidget middleware: no user found with user id',
+        message: { err: 'Unable to delete widget because no user found with that user id' },
+      });
+    }
+    // add user info to res.locals
+    res.locals.user = user;
+    // then remove user_id/widget_id combo from join table
+    const removeUserWidgetQuery = `
+      DELETE FROM users_widgets
+      WHERE user_id = $1 AND widget_id = $2
+    `;
+    await usersDB.query(removeUserWidgetQuery, [userID, widgetID]);
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error occurred in userController.deleteWidgetmiddleware ${err}`,
+      message: { err: "Unable to remove widget from user's widgets" },
+    });
+  }
+};
+
 module.exports = userController;
