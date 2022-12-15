@@ -9,20 +9,11 @@ import '../stylesheets/main.css';
 // /data/carbon-over-time/:state
 // /data/disasters-all-time/:state
 
-const Main = () => {
-  // signout button functionality to remove local storage
-  // TODO: put the actual button in, waiting until after Josh and Mia merge to avoid conflicts
-  function handleSignOut() {
-    localStorage.removeItem('username');
-    localStorage.removeItem('id');
-    localStorage.removeItem('firstName');
-    localStorage.removeItem('widgets');
-  }
-
+const Main = ({ setShowLogin }) => {
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
-        <Navbar />
+        <Navbar setShowLogin={setShowLogin} />
         <div className='bodyContainer'>
           <Sidebar />
           <WidgetGridContainer />

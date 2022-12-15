@@ -3,7 +3,7 @@ import Main from './Main';
 import axios from 'axios';
 import '../stylesheets/login.css';
 
-const Login = ({ showLogin, setShowLogin }) => {
+const Login = ({ showLogin, setShowLogin, setSignedIn }) => {
   const changePage = (page) => {
     setShowLogin(page);
   };
@@ -43,6 +43,7 @@ const Login = ({ showLogin, setShowLogin }) => {
       localStorage.setItem('id', JSON.stringify(id));
       localStorage.setItem('firstName', first);
       localStorage.setItem('widgets', JSON.stringify(widgets));
+      localStorage.setItem('signedIn', 'true');
       changePage('main');
     } catch (error) {
       console.error(error);
