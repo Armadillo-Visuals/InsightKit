@@ -20,9 +20,6 @@ const Login = ({ showLogin, setShowLogin }) => {
     authenticateUser(username, password);
   };
 
-  // should get a status code back from the server to confirm user after sending
-  //  username and password for authentication
-
   // post request to the backend to authenticate the user
   // returns id, firstname, last name, username, hashed password, and array of widget objects
   async function authenticateUser(username, password) {

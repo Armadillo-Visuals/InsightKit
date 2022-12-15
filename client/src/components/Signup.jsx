@@ -54,7 +54,7 @@ const Signup = ({ showLogin, setShowLogin }) => {
   return (
     <div>
       <h1>Hello, this is the signup page</h1>
-      <button onClick={changePage}>Register Login</button>
+      <button onClick={changePage}>Login</button>
       <div className='signupFormContainer'>
         <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
