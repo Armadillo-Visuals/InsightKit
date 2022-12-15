@@ -8,7 +8,6 @@ const App = () => {
   const [disaster, setDisaster] = useState('');
   const [graphData, setGraphData] = useState(null);
   const [showLogin, setShowLogin] = useState('login');
-  const [signedIn, setSignedIn] = useState(false);
 
   // check if the user is already signed in ()
 
@@ -42,7 +41,7 @@ const App = () => {
   } else if (showLogin === 'login') {
     return (
       <div className='title'>
-        <Login showLogin={showLogin} setShowLogin={setShowLogin} setSignedIn={setSignedIn} />
+        <Login showLogin={showLogin} setShowLogin={setShowLogin} />
       </div>
     );
   } else if (showLogin === 'signup') {
