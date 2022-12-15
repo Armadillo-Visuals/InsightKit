@@ -37,7 +37,6 @@ const App = () => {
   if (showLogin === 'login') {
     return (
       <div className='title'>
-        <h1>Environment-IQ</h1>
         <Login showLogin={showLogin} setShowLogin={setShowLogin} />
       </div>
     );
