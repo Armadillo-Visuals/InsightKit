@@ -83,9 +83,9 @@ userController.addWidget = async (req, res, next) => {
       WHERE 
         graphtype = $1 AND
         datatype = $2 AND
-        parameter1 = $3 AND
-        parameter2 = $4 AND
-        parameter3 = $5
+        (parameter1 = $3 OR parameter1 IS null) AND
+        (parameter2 = $4 OR parameter2 IS null) AND
+        (parameter3 = $5 OR parameter3 IS null)
     `;
     const widgetParams = [graphtype, datatype, parameter1, parameter2, parameter3];
     const { rows } = await usersDB.query(getWidgetQuery, widgetParams);
