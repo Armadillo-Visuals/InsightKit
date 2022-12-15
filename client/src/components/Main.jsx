@@ -1,8 +1,4 @@
 import React, { component } from 'react';
-import Graph from './Graph';
-import BarChart from './BarChart';
-import PieChart from './PieChart';
-import Search from './search';
 import Sidebar from './Sidebar';
 import WidgetGridContainer from './widgetGridContainer';
 import Navbar from './NavBar';
