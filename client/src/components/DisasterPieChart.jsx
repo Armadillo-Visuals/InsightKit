@@ -39,7 +39,7 @@ const DisasterPieChart = ({ state }) => {
   }
 
   return (
-    <div className='pie' id='mydiv'>
+    <div className='widget-contents'>
       <h2>{`Disasters in ${state}`}</h2>
       <Pie
         className='pie'

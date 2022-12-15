@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from '../stylesheets/images/logo.png';
-import leafLogo from '../stylesheets/images/leafLogo.png';
 import '../stylesheets/navbar.css';
 const Navbar = ({ setShowLogin }) => {
   function changePage() {

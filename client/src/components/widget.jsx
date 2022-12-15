@@ -1,7 +1,8 @@
 import React from 'react';
 import DisastersOverTime from './DisastersOverTime';
-import CarbonOverTime from './CarbonOverTIme';
+import CarbonOverTime from './CarbonOverTime';
 import DisasterPieChart from './DisasterPieChart';
+import '../stylesheets/widget.css';
 
 const Widget = ({ widgetInfo, deleteWidget }) => {
   // NOTE: added an "id" property to each widget object which can be used to

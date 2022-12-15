@@ -62,7 +62,7 @@ const Login = ({ showLogin, setShowLogin, setSignedIn }) => {
             <br />
             <br />
 
-            <input type='text' name='password' placeholder='Password' />
+            <input type='password' name='password' placeholder='Password' />
             <br />
             <br />
             <button id='loginButton' type='submit'>

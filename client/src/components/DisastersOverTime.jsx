@@ -22,8 +22,8 @@ const DisastersOverTime = ({ disaster, state }) => {
   }, []);
 
   return (
-    <div className='graph' id='mydiv'>
-      <h2>{`${state} ${disaster}s by Year`}</h2>
+    <div className='widget-contents'>
+      <h2>{`${state} ${disaster === 'All' ? 'All' : disaster + 's'} by Year`}</h2>
       <Line
         datasetIdKey='disasters'
         data={{

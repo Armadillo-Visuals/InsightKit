@@ -1,4 +1,15 @@
-.widgetGridContainer {
+.widgetGridWrapper {
   margin-left: 8px;
-  border: 1px solid black;
+  background-color: #a2a452;
+  height: 100%;
+  width: 100%;
+  padding: 2em;
+}
+
+.widgetGridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  height: 100%;
 }
