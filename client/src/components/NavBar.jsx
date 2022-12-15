@@ -17,10 +17,14 @@ const Navbar = ({ setShowLogin }) => {
     // return user back to the login page
     changePage();
   }
+
+  const username = localStorage.getItem('username');
+
   return (
     <div className='navBarWrapper'>
       <nav className='navBarContainer'>
-        <img src='https://i.imgur.com/bfLAokI.png' className='titleLogo'></img>
+        <p></p>
+        <img src='https://i.imgur.com/EfB6ead.png' className='titleLogo'></img>
         <div className='navigation'>
           <a className='logoutButton'>
             <img src='https://i.imgur.com/KcXKTPo.png' className='leafLogo'></img>
