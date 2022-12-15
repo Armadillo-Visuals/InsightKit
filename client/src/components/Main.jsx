@@ -33,13 +33,21 @@ const Main = ({ setShowLogin }) => {
     setUserWidgets(response.data.widgets);
   };
 
+  const deleteWidget = async (joinID) => {
+    const userID = localStorage.getItem('id');
+    const response = await axios.delete(
+      `http://localhost:3000/users/widget/${userID}/${joinID}`, 
+    );
+    setUserWidgets(response.data.widgets);
+  }
+
   return (
     <div className='mainWrapper'>
       <div className='mainContainer'>
         <Navbar setShowLogin={setShowLogin} />
         <div className='bodyContainer'>
           <Sidebar addWidget={addWidget} />
-          <WidgetGridContainer widgets={userWidgets} />
+          <WidgetGridContainer widgets={userWidgets} deleteWidget={deleteWidget} />
         </div>
       </div>
     </div>

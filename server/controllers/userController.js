@@ -145,7 +145,8 @@ userController.getUserWidgets = async (req, res, next) => {
 userController.deleteWidget = async (req, res, next) => {
   try {
     // expects req.body to contain user id and widget id
-    const { userID, joinID } = req.body;
+    const joinID = Number(req.params.joinID);
+    const userID = Number(req.params.userID);
     // make sure a user exists in the database with that userID and get the rest of their info
     const response = await usersDB.query('SELECT * FROM users WHERE id = $1', [userID]);
     const user = response.rows[0];
