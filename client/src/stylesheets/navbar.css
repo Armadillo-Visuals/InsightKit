@@ -1,6 +1,7 @@
 .navBarWrapper {
   background-color: #39543b;
   color: #f4f0e1;
+  margin-bottom: 20px;
 }
 
 .navBarContainer {
@@ -13,40 +14,44 @@
 
 .titleLogo {
   width: 400px;
-}
-
-.navigation {
-  background-color: black;
+  margin-right: 20px;
 }
 
 .leafLogo {
-  width: 25px;
-  float: left;
+  width: 35px;
+  margin-right: -35px;
 }
 
 .logout {
-  font-family: 'Oswald', sans-serif;
-  position: relative;
-  right: -20px;
-  /* bottom: -4px; */
-  overflow: hidden;
-  letter-spacing: 3px;
+  font-family: 'Montserrat', sans-serif;
+  overflow: auto;
+  letter-spacing: 2px;
   opacity: 0;
+  border-radius: 5px;
+  color: #f4f0e1;
+  border: 1px solid #39543b;
+  background-color: #39543b;
   transition: opacity 0.45s;
   -webkit-transition: opacity 0.35s;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .logoutButton {
+  border-radius: 5px;
   text-decoration: none;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
   float: right;
   padding: 12px;
   margin: 15px;
-  color: white;
-  width: 25px;
-  background-color: black;
+  color: #39543b;
+  width: 35px;
+  background-color: #ece8d9;
   transition: width 0.35s;
   -webkit-transition: width 0.35s;
-  overflow: hidden;
+  /* overflow: hidden; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 a:hover {
@@ -54,18 +59,13 @@ a:hover {
 }
 
 a:hover .logout {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 a {
   text-decoration: none;
 }
 
-/* nav ul {
-  display: flex;
-  list-style: none;
+.welcomeMessage {
+  font-family: 'Montserrat', sans-serif;
 }
-
-nav li {
-  padding-left: 1rem;
-} */ ;
