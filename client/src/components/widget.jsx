@@ -25,8 +25,8 @@ const Widget = () => {
 
   return (
     <div className='widget'>
-      <DisastersOverTime state='CA' disaster='Fire' />
-      <CarbonOverTime state='CA' />
+      {/* <DisastersOverTime state='CA' disaster='Fire' />
+      <CarbonOverTime state='CA' /> */}
       <DisasterPieChart state='CA' />
     </div>
   );
