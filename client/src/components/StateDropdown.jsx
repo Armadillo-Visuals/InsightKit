@@ -1,10 +1,10 @@
 import React from 'react';
 
-const StateDropdown = () => {
+const StateDropdown = ({ handleSelect }) => {
   return (
     <div className='stateDropdown'>
       <label htmlFor='byState'></label>
-      <select className='dropbtn' id='state' name='state'>
+      <select className='dropbtn' id='state' name='state' onChange={handleSelect}>
         <option value='AL'>Alabama</option>
         <option value='AK'>Alaska</option>
         <option value='AZ'>Arizona</option>
