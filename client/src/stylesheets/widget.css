@@ -1,6 +1,7 @@
 .widget {
   background-color: #f4f0e1;
   border-radius: 1em;
+  height: fit-content;
   /* width: 40%;
   height: 0;
   padding-bottom: 35%;

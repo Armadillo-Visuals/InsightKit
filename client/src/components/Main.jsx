@@ -15,7 +15,6 @@ const Main = ({ setShowLogin }) => {
 
   // user's widgets are being stored inside of localStorage upon login. Grabbing the widgets from localStorage to render on page
   useEffect(() => {
-    console.log('updating: ', localStorage.getItem('widgets'))
     setUserWidgets(JSON.parse(localStorage.getItem('widgets')));
   }, []);
 
@@ -33,6 +32,7 @@ const Main = ({ setShowLogin }) => {
     });
     localStorage.setItem('widgets', JSON.stringify(response.data.widgets));
     setUserWidgets(JSON.parse(localStorage.getItem('widgets')))
+    // setUserWidgets(response.data.widgets)
   };
 
   const deleteWidget = async (joinID) => {
@@ -42,6 +42,7 @@ const Main = ({ setShowLogin }) => {
     );
     localStorage.setItem('widgets', JSON.stringify(response.data.widgets));
     setUserWidgets(JSON.parse(localStorage.getItem('widgets')))
+    // setUserWidgets(response.data.widgets)
   }
 
   return (
