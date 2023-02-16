@@ -1,6 +1,6 @@
 <!-- Readme template from https://github.com/othneildrew/Best-README-Template/blob/master/BLANK_README.md-->
 
-<a name="readme-top"></a>
+<a name="readmeTop"></a>
 
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -48,14 +48,14 @@
   </ol>
 </details>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 ### Built With
 
 - [![React][react.js]][react-url]
 - [![Node.js][node.js]][node-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
@@ -63,7 +63,7 @@
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement."
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
@@ -72,7 +72,13 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+To run tests:
+
+Start the server: `npm run backstart`
+
+Run supertest tests: `npm run test-supertest`
+
+<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 <!-- LICENSE -->
 
@@ -80,7 +86,7 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the Mozilla License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 <!-- CONTACT -->
 
@@ -90,7 +96,7 @@ Rachel Cheman - rachelcheman@gmail.com
 
 Project Link: [https://github.com/Environment-IQ/Environment-IQ](https://github.com/Environment-IQ/Environment-IQ)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 <!-- Authors -->
 
@@ -106,11 +112,11 @@ Sakura Akiyama - [Github](https://github.com/sakurakiyama) || [Linkedin](https:/
 
 <!-- Acknowledgements -->
 
-## Acknowledgements
+## Acknowledgments
 
 Environment-IQ was built on the work of [Insight Kit built by Armadilla-Visuals](https://github.com/Armadillo-Visuals/InsightKit)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
