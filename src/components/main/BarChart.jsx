@@ -1,4 +1,12 @@
-import React from 'react';
+/**
+ * **************************************************
+ *
+ * @description
+ * This component renders the bar chart
+ *
+ * **************************************************
+ */
+
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 

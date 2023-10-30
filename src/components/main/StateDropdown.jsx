@@ -1,12 +1,22 @@
-// Class Search extends Component
+/**
+ * **************************************************
+ *
+ * @description
+ * This component renders the dropdown of states
+ *
+ * **************************************************
+ */
 
-import React, { component } from 'react';
-
-const Search = (props) => {
+const StateDropdown = ({ handleSelect }) => {
   return (
-    <div>
-      <label htmlFor='byState'>State:</label>
-      <select id='state' name='state'>
+    <div className='bg-[var(--darkgreen)] text-[var(--cream)] p-2 m-4'>
+      <label htmlFor='byState'></label>
+      <select
+        className='bg-[var(--darkgreen)] w-full'
+        id='state'
+        name='state'
+        onChange={handleSelect}
+      >
         <option value='AL'>Alabama</option>
         <option value='AK'>Alaska</option>
         <option value='AZ'>Arizona</option>
@@ -59,26 +69,8 @@ const Search = (props) => {
         <option value='WI'>Wisconsin</option>
         <option value='WY'>Wyoming</option>
       </select>
-      <span>
-        <label htmlFor='disaster'>Disaster Type:</label>
-        <select id='disaster' name='disaster'>
-          <option value='Flood'>Flood</option>
-          <option value='Fire'>Fire</option>
-          <option value='Earthquake'>Earthquake</option>
-          <option value='SevereStorms'>Severe Storm</option>
-          <option value='Hurricane'>Hurricane</option>
-          <option value='Tornado'>Tornado</option>
-          <option value='Freezing'>Freezing</option>
-          <option value='Drought'>Drought</option>
-          <option value='All'>All</option>
-        </select>
-        <option value='Alabama'></option>
-      </span>
-      <span>
-        <button onClick={props.handleClick}>Enter</button>
-      </span>
     </div>
   );
 };
 
-export default Search;
+export default StateDropdown;
