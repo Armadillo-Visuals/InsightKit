@@ -1,6 +1,6 @@
-const axios = require('axios');
-const db = require('../models/carbonModel');
-const { disastersPerYear, disasterTotals } = require('../utils/helpers');
+import axios from 'axios';
+import db from '../models/carbonModel.js';
+import { disastersPerYear, disasterTotals } from '../utils/helpers.js';
 
 const disastersController = {};
 
@@ -46,4 +46,4 @@ disastersController.getDisastersAllTime = async (req, res, next) => {
   }
 };
 
-module.exports = disastersController;
+export default disastersController;

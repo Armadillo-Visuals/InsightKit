@@ -1,5 +1,5 @@
-const usersDB = require('../models/userModel');
-const bcrypt = require('bcrypt');
+import usersDB from '../models/userModel.js';
+import bcrypt from 'bcrypt';
 
 const userController = {};
 
@@ -174,4 +174,4 @@ userController.deleteWidget = async (req, res, next) => {
   }
 };
 
-module.exports = userController;
+export default userController;

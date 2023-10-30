@@ -1,5 +1,5 @@
 // function takes the response from the API and generates an object with years as keys and numbers of disasters as values
-const disastersPerYear = (response) => {
+export const disastersPerYear = (response) => {
   const stor = {};
   const disasterSummaries = response.data.DisasterDeclarationsSummaries;
 
@@ -14,7 +14,7 @@ const disastersPerYear = (response) => {
   return stor;
 };
 
-const disasterTotals = (response) => {
+export const disasterTotals = (response) => {
   const stor = {};
   const disasterSummaries = response.data.DisasterDeclarationsSummaries;
   for (let i = 0; i < disasterSummaries.length; i++) {
@@ -37,5 +37,3 @@ const disasterTotals = (response) => {
   }
   return stor;
 };
-
-module.exports = { disasterTotals, disastersPerYear };

@@ -1,4 +1,4 @@
-const carbonDB = require('../models/carbonModel');
+import carbonDB from '../models/carbonModel.js';
 
 const carbonController = {};
 
@@ -22,4 +22,4 @@ carbonController.getCarbonOverTime = async (req, res, next) => {
   }
 };
 
-module.exports = carbonController;
+export default carbonController;

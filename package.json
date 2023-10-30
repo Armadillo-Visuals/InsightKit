@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
+  "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
     "format": "prettier --write .",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
-    "build": "Webpack .",
+    "fakedev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
+    "fakebuild": "Webpack .",
     "test": "jest --verbose",
     "test-supertest": "jest supertest.js",
-    "frontstart": "NODE_ENV=development webpack-dev-server --open",
-    "backstart": "nodemon ./server/server.js"
+    "start": "NODE_ENV=development webpack-dev-server --open",
+    "server": "nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",
@@ -38,7 +41,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@vitejs/plugin-react": "^4.1.0",
     "async_hooks": "^1.0.0",
+    "autoprefixer": "^10.4.16",
     "axios": "^1.2.1",
     "bcrypt": "^5.1.0",
     "chart.js": "^4.0.1",
@@ -55,6 +61,7 @@
     "node-fetch": "^3.3.0",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
+    "postcss": "^8.4.31",
     "puppeteer": "^19.4.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
@@ -70,6 +77,8 @@
     "supertest": "^6.3.3",
     "svg-inline-loader": "^0.8.2",
     "svg-url-loader": "^8.0.0",
-    "svgo": "^3.0.2"
+    "svgo": "^3.0.2",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.5.0"
   }
 }

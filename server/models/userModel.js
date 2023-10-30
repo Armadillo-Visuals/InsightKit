@@ -1,3 +1,5 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const { Pool } = require('pg');
 
 const PG_URI =
@@ -7,7 +9,7 @@ const pool = new Pool({
   connectionString: PG_URI,
 });
 
-module.exports = {
+export default {
   query: (text, params, callback) => {
     return pool.query(text, params, callback);
   },

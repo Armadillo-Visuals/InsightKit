@@ -1,11 +1,16 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const cors = require('cors');
-const PORT = 3000;
-const dataRouter = require('./routes/data');
-const usersRouter = require('./routes/users');
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+// import { dataRouter } from './routes/data.js';
+import dataRouter from './routes/data.js';
 
+import usersRouter from './routes/users.js';
+
+const app = express();
+const PORT = 3000;
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
@@ -48,4 +53,4 @@ app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}...`);
 });
 
-module.exports = app;
+export default app;

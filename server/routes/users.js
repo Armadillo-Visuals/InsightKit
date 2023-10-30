@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controllers/userController');
+import { Router } from 'express';
+const router = Router();
+import userController from '../controllers/userController.js';
 
 // sign up
 router.post('/signup', userController.createUser, (req, res) => {
@@ -31,4 +31,4 @@ router.delete(
   },
 );
 
-module.exports = router;
+export default router;
