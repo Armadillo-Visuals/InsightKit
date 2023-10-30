@@ -1,14 +1,4 @@
-<!-- Readme template from https://github.com/othneildrew/Best-README-Template/blob/master/BLANK_README.md-->
-
 <a name="readmeTop"></a>
-
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 
 <div align='center'>
 
@@ -24,40 +14,21 @@
 <br />
 <div align="center">
   <a href="https://github.com/Environment-IQ/Environment-IQ">
-    <img src="https://i.imgur.com/mrT2pHx.png" alt="Logo" width="1000" height="80">
+    <img src="https://i.imgur.com/ZZD3eiS.png" alt="Logo" width="400px" height="auto">
   </a>
-
-<h3 align="center">Environment IQ</h3>
 
   <p align="center">
     Visualization tool for environmental data
     <br />
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#built-with">Built With</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#authors">Authors</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+## Tech Stack
 
-  </ol>
-</details>
-
-<p align="right">(<a href="#readmeTop">back to top</a>)</p>
-
-### Built With
-
-- [![React][react.js]][react-url]
-- [![Node.js][node.js]][node-url]
-
-<p align="right">(<a href="#readmeTop">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
+- React
+- TailwindCSS
+- Vite
+- PostgreSQL
+- Node/Express
 
 ## Contributing
 
@@ -74,31 +45,13 @@ Don't forget to give the project a star! Thanks again!
 
 To run tests:
 
-Start the server: `npm run backstart`
+Start the server: `npm run server`
 
 Run supertest tests: `npm run test-supertest`
-
-<p align="right">(<a href="#readmeTop">back to top</a>)</p>
-
-<!-- LICENSE -->
 
 ## License
 
 Distributed under the Mozilla License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readmeTop">back to top</a>)</p>
-
-<!-- CONTACT -->
-
-## Contact
-
-Rachel Cheman - rachelcheman@gmail.com
-
-Project Link: [https://github.com/Environment-IQ/Environment-IQ](https://github.com/Environment-IQ/Environment-IQ)
-
-<p align="right">(<a href="#readmeTop">back to top</a>)</p>
-
-<!-- Authors -->
 
 ## Authors
 
@@ -110,13 +63,16 @@ Rachel Cheman - [Github](https://github.com/rcheman) || [Linkedin](www.linkedin.
 
 Sakura Akiyama - [Github](https://github.com/sakurakiyama) || [Linkedin](https://www.linkedin.com/in/sakura-akiyama-bowden/)
 
+## Contact
+
+Rachel Cheman - rachelcheman@gmail.com
+Project Link: [https://github.com/Environment-IQ/Environment-IQ](https://github.com/Environment-IQ/Environment-IQ)
+
 <!-- Acknowledgements -->
 
 ## Acknowledgments
 
 Environment-IQ was built on the work of [Insight Kit built by Armadilla-Visuals](https://github.com/Armadillo-Visuals/InsightKit)
-
-<p align="right">(<a href="#readmeTop">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
